@@ -9,7 +9,7 @@ import { userData,usersdata} from '../userData';
 })
 
 export class AuthService {
-  private apiServer = "http://localhost:3000";
+  private apiServer = "http://template-json-server.vercel.app";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
