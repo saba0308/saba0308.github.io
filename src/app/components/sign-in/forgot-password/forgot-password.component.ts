@@ -121,7 +121,7 @@ export class ForgotPasswordComponent implements OnInit {
       this.show = true;
     }
 
-    this._http.get<any>("https://template-json-server.vercel.app/usersData")
+    this._http.get<any>("https://jsonplaceholder.typicode.com/posts")
       .subscribe(res => {
         const user = res.find((a: any) => {
           if (a.email === this.signInForm.value.email)
