@@ -8,9 +8,10 @@ import{ TmMenuService} from '@tmlib/ui-sdk/menu';
 import { Subject } from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
 import{DataService}from '../admin/services/data.service'
-import { Router } from '@angular/router';
+import { NavigationEnd, Router,Event  } from '@angular/router';
 import { userData } from '../sign-in/userData';
 import { AuthService } from '../sign-in/services/auth.service';
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -45,11 +46,24 @@ export class AdminComponent implements OnInit,OnDestroy  {
   lang!: string;
   arabicButton:boolean=false;
   englishButton: boolean=true;
+  message:string;
   id!: string | null;
   constructor(private router:Router,private dataService:DataService,private sidebarService: TmSidebarService,private tmMenuService: TmMenuService, private themeService: TmThemeService,
     private breakpointService: TmMediaBreakpointsService,private translate: TranslateService,private apiService:AuthService) { translate.setDefaultLang('en');
     this.englishButton = true;
-  
+    router.events
+      .pipe(filter((e: Event): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe((res: NavigationEnd) => {
+        if (res.url == '/admin/dashboard') {
+          this.message = "Dashboard"
+
+        }
+        else if (res.url == '/admin/user-list') {
+          this.message = "Users"
+
+        }
+
+      });
     
   }
     useLanguage(lang:string) {
