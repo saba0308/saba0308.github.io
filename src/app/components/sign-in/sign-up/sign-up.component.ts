@@ -53,7 +53,7 @@ export class SignUpComponent implements OnInit {
     this.apiService.create(this.signUpForm.value).subscribe((res:any) => {
      
     }) 
-    this.router.navigate(['/auth/log-in']);
+    this.router.navigate(['auth/log-in']);
   }
   
   get f(): { [key: string]: AbstractControl } {
