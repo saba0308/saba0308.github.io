@@ -62,7 +62,7 @@ export class LogInComponent implements OnInit {
     }
 
     else {
-      this.router.navigate(['user']);
+      this.router.navigate(['auth/log-in']);
     }
     this._http.get<userData[]>("https://template-json-server.vercel.app/usersData")
       .subscribe(res => {
