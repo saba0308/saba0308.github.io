@@ -73,7 +73,7 @@ tm-layout {
                 }
 
                 &:is(:hover,.active) {
-                    background-color: $text-color;
+                    background-color: var(--text-basic-color);
 
                     a {
                         color: var(--header-background-color);
@@ -128,6 +128,8 @@ tm-layout {
             padding: 15px;
             display: flex;
             justify-content: center;
+            position: relative;
+            bottom: 10px;
           }
 
 
@@ -135,7 +137,7 @@ tm-layout {
         .sidebar-slider {
             position: fixed;
             top: 0;
-            right: -250px;
+            right: -24%;
             bottom: 0;
             background-color: var(--header-background-color);
             transform: translateX(-100%);
@@ -250,6 +252,15 @@ tm-layout {
             .headercontent {
                 font-family: 'Akronim';
                 display: block;
+            }
+        }
+        tm-layout-column{
+            .sidebar-slider {
+                position: fixed;
+                top: 0;
+                left: 25%;
+                bottom: 0;
+               
             }
         }
     }

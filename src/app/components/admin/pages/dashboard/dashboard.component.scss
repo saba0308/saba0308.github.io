@@ -115,6 +115,11 @@ $background-color: var(--header-background-color);
         height: 350px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         border-radius: 10px;
+        
+       tm-card-body{
+        padding: 20px;
+        width: 300px;
+       }
     }
 
     .trafficCard {
@@ -122,7 +127,11 @@ $background-color: var(--header-background-color);
         height: 350px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         border-radius: 10px;
-
+   
+        tm-card-body{
+            padding: 20px;
+            width: 500px;
+           }
     }
 
     .usersCard {
@@ -174,6 +183,13 @@ $background-color: var(--header-background-color);
                 .footer {
                     left: 20%;
                 }
+            }
+        }
+        .trafficCard{
+            width:100%;
+            tm-card-body{
+                padding: 20px;
+                width: 520%;
             }
         }
     }

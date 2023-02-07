@@ -100,13 +100,20 @@ export class AdminComponent implements OnInit,OnDestroy  {
   changeTheme(themeName:string) {
     this.themeService.changeTheme(themeName);
   }
-
+tag:string;
   toggle() {
+
+    if(this.direction=='rtl')
+    {
+     this.tag="left";
     this.sidebarService.toggle(false, 'left');
+    }
+    else if(this.direction=='ltr'){
+      this.tag="right";
+      this.sidebarService.toggle(false, 'right');
+    }
   }
-  settings(){
-    this.sidebarService.toggle(false, 'right');
-  }
+
   checked = false;
 
   rtl(checked: boolean) {

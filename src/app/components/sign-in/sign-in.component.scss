@@ -16,7 +16,7 @@ tm-layout {
             width: 400px;
             position: relative;
             top: 100px;
-            left: 35%;
+            left: 32%;
             background-color: rgba($color: #ffffff, $alpha: 0.8);
             border-radius: 10px;
             padding: 20px;
@@ -47,7 +47,7 @@ tm-layout {
 
             tm-card {
 
-                left: 30%;
+                left: 25%;
 
 
 
@@ -120,14 +120,101 @@ tm-layout {
     }
 }
 
-@media screen and (max-width:450px) and (min-width:0px) {
+@media screen and (max-width:450px) and (min-width:400px) {
     tm-layout {
 
         tm-layout-column {
             width: 450px;
+         
+            tm-card {
+                width:400px;
+                left: -2%;
+            }
+        }
+    }
+}
+@media screen and (max-width:400px) and (min-width:350px) {
+    tm-layout {
+
+        tm-layout-column {
+            width: 400px;
 
             tm-card {
-                left: 0%;
+                width:350px;
+                left: -3%;
+                .userTableHeader {
+                    position: absolute;
+                    border-radius: 7px;
+                    background: #3366ff;
+                    color: white;
+                    font-weight: 800;
+                    width: 240px;
+                    height: 40px;
+                    padding: 8px;
+                    text-align: center;
+                    top: -20px;
+                    left: 50px;
+                    z-index: 1;
+    
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:350px) and (min-width:300px) {
+    tm-layout {
+
+        tm-layout-column {
+            width: 400px;
+
+            tm-card {
+                width:320px;
+                left: -2%;
+                .userTableHeader {
+                    position: absolute;
+                    border-radius: 7px;
+                    background: #3366ff;
+                    color: white;
+                    font-weight: 800;
+                    width: 240px;
+                    height: 40px;
+                    padding: 8px;
+                    text-align: center;
+                    top: -20px;
+                    left: 50px;
+                    z-index: 1;
+    
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:300px) and (min-width:200px) {
+    tm-layout {
+
+        tm-layout-column {
+            width: 300px;
+            height: 100%;
+             background-image: none;
+             background-color: deepskyblue;
+            tm-card {
+                width:280px;
+                left: -2%;
+                .userTableHeader {
+                    position: absolute;
+                    border-radius: 7px;
+                    background: #3366ff;
+                    color: white;
+                    font-weight: 800;
+                    width: 200px;
+                    height: 40px;
+                    padding: 8px;
+                    text-align: center;
+                    top: -20px;
+                    left: 40px;
+                    z-index: 1;
+    
+                }
             }
         }
     }
