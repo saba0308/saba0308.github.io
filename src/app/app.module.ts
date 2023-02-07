@@ -39,7 +39,7 @@ import { APP_BASE_HREF } from '@angular/common';
     TmMenuModule,TmContextMenuModule,
   
   ],
-  providers: [{provide: APP_BASE_HREF, useValue: 'saba0308.github.io' }],
+  providers: [{provide: APP_BASE_HREF, useValue: window['base-href'] }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
