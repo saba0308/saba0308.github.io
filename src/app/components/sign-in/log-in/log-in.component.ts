@@ -64,7 +64,7 @@ export class LogInComponent implements OnInit {
     else {
       this.router.navigate(['auth/log-in']);
     }
-    this._http.get<userData[]>("https://jsonplaceholder.typicode.com/posts")
+    this._http.get<userData[]>("https://template-json-server.vercel.app/usersData")
       .subscribe(res => {
         const user = res.find((a: userData) => {
           return a.email === this.signInForm.value.email && a.password === this.signInForm.value.password
