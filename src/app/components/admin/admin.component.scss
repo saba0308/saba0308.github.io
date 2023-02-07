@@ -72,7 +72,7 @@ tm-layout {
                     }
                 }
 
-                &:hover {
+                &:is(:hover,.active) {
                     background-color: var(--text-basic-color);
 
                     a {
@@ -89,23 +89,7 @@ tm-layout {
                     }
 
                 }
-                .active{
-                    background-color: var(--text-basic-color);
 
-                    a {
-                        color: var(--header-background-color);
-
-                        svg {
-                            fill: var(--header-background-color);
-
-                            path {
-                                stroke: var(--header-background-color);
-                            }
-
-                        }
-                    }
-
-                }
             }
         }
 
