@@ -42,11 +42,12 @@ export class UserComponent implements OnInit {
     this.userdata.status = this.offline;
     // offline and lastseen
     this.apiService.update(this.id, this.userdata).subscribe((res: any) => {
-      localStorage.setItem('isLoggedIn', 'false');
-      localStorage.removeItem('currentuser');
-      this.router.navigate(['/auth/log-in']);
-      console.log('Post updated successfully!');
+     
     })
+    localStorage.setItem('isLoggedIn', 'false');
+    localStorage.removeItem('currentuser');
+    this.router.navigate(['/auth/log-in']);
+    console.log('Post updated successfully!');
   }
 
 
