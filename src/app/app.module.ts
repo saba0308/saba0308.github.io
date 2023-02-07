@@ -23,6 +23,7 @@ import { TmUserModule } from '@tmlib/ui-sdk/user';
 import { AdminModule } from './components/admin/admin.module';
 import { DateAgoPipe } from './components/pipes/date-ago.pipe';
 import { SortPipe } from './components/pipes/sort.pipe';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { SortPipe } from './components/pipes/sort.pipe';
     TmMenuModule,TmContextMenuModule,
   
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue: 'saba0308.github.io'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
