@@ -1,13 +1,40 @@
-.productForm{
-    display: flex;
-    flex-direction: column;
-    gap:20px;
-    text-align:left;
-    .invalid-feedback{
-        color: red;
-       }
-       .is-invalid{
-        border-color: red;
-        color: red;
-       }
+tm-card {
+   
+    width:100%;
+
+    tm-card-body {
+
+        .productForm {
+            display: flex;
+            flex-direction: column;
+          
+            gap: 20px;
+            text-align: left;
+            width:100%;
+            .container{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 20px;
+                width:100%;
+                .form-group{
+                    width:45%;
+                }
+                .button-group{
+                    width:20%;
+                    position: relative;
+                    left:72.5%;
+                }
+            }
+
+            .invalid-feedback {
+                color: red;
+            }
+
+            .is-invalid {
+                border-color: red;
+                color: red;
+            }
+        }
+    }
 }

@@ -33,15 +33,15 @@ export class ProductService {
       catchError(this.errorHandler)
     )
   }
-  update(id:any,productsData:any ): Observable<productData[]> {
-    return this.httpClient.patch<productData[]>(this.apiServer + '/products/' + id, JSON.stringify(productsData), this.httpOptions)
+  update(id:any,productsData:any ): Observable<productData> {
+    return this.httpClient.patch<productData>(this.apiServer + '/products/' + id, JSON.stringify(productsData), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
   }
-  delete(id:any):Observable<productData>{
+  delete(pid:any):Observable<productData>{
    
-    return this.httpClient.delete<productData>(this.apiServer + '/products/' + id,this.httpOptions)
+    return this.httpClient.delete<productData>(this.apiServer + '/products/' + pid,this.httpOptions)
    
   }
   errorHandler(error:any) {
