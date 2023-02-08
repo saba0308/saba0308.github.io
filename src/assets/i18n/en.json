@@ -19,7 +19,8 @@
 		"layout.theme.corporate": "Corporate",
         "layout.align":"RTL",
         "sidebar.nav.dashboard":"Dashboard",
-        "sidebar.nav.users":"Users"
+        "sidebar.nav.users":"Users",
+        "sidebar.nav.products":"Products"
 	},
     "dashboard":{
           "card.title.booking":"Booking",

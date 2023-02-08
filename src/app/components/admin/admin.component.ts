@@ -60,7 +60,12 @@ export class AdminComponent implements OnInit,OnDestroy  {
         }
         else if (res.url == '/admin/user-list') {
           this.message = "Users"
-
+        }
+        else if (res.url == '/admin/products-list') {
+          this.message = "Products"
+        }
+        else if (res.url == '/admin/products-list/create') {
+          this.message = " Create Product"
         }
 
       });

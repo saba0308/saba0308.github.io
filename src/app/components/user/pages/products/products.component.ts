@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/components/admin/services/products/product.service';
+import { productData } from 'src/app/components/model/product';
 
 @Component({
   selector: 'app-products',
@@ -7,34 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService:ProductService) { }
   // products list
-  products = [
-    {
-      id: 1,
-      name: 'Phone XL',
-      price: 799,
-      description: 'A large phone with one of the best screens',
-      image:'../../../../../assets/productsImage/phone-1.jpeg'
-    },
-    {
-      id: 2,
-      name: 'Phone Mini',
-      price: 699,
-      description: 'A great phone with one of the best cameras',
-      image:'../../../../../assets/productsImage/phone-2.jpeg'
-    },
-    {
-      id: 3,
-      name: 'Phone Standard',
-      price: 299,
-      description: 'A small phone with one of the best screens',
-      image:'../../../../../assets/productsImage/phone-3.jpeg'
-    
-    }
-  ];
+  products:productData[]
   
   ngOnInit(): void {
+    this.getAllData();
   }
-
+  getAllData() {
+    this.apiService.getAll().subscribe((data: productData[]) => {
+      console.log(data);
+      this.products = data;
+    })
+  }
 }
