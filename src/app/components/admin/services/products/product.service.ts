@@ -7,7 +7,7 @@ import { productData } from 'src/app/components/model/product';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiServer = "http://localhost:3000";
+  private apiServer = "https://template-json-server.vercel.app/api";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

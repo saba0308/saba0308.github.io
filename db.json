@@ -168,7 +168,7 @@
   "products": [
     {
       "productName": "Redmi 10A",
-      "productId": "EM001",
+      "productCode": "EM001",
       "productPrice": 250,
       "productCategory": "Electronics",
       "productDescription": "Redmi Mobiles",
@@ -177,7 +177,7 @@
     },
     {
       "productName": "Redmi Note 13Pro",
-      "productId": "EM002",
+      "productCode": "EM002",
       "productPrice": 400,
       "productCategory": "Electronics",
       "productDescription": "Redmi Mobiles",

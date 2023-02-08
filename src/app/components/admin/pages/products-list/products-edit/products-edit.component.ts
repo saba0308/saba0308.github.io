@@ -21,7 +21,7 @@ id:any;
    
     this.productForm = this.formBuilder.group(
       { productName:[this.productsData.productName],
-        productId: [this.productsData.productId],
+        productCode: [this.productsData.productCode],
         productPrice:[this.productsData.productPrice],
         productCategory:[this.productsData.productCategory],
         productDescription:[this.productsData.productDescription], 
