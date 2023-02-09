@@ -23,7 +23,7 @@
         "sidebar.nav.products":"Products"
 	},
     "dashboard":{
-          "card.title.booking":"Booking",
+          "card.title.booking":"Orders",
           "card.title.visits":"Website visits",
           "card.title.revenue":"Revenue",
           "card.title.users":"Users",

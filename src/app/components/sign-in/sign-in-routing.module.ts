@@ -7,16 +7,16 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 const routes: Routes = [
 
   { path: 'sign-up', component: SignUpComponent,data: {
-    title: 'register'
+    title: 'Shoppingkart Sign up'
   } },
   { path: 'log-in', component: LogInComponent ,data: {
-    title: 'register'
+    title: 'Shoppingkart  Sign In'
   }},
   { path: 'forgot-passsword', component: ForgotPasswordComponent,data: {
-    title: 'register'
+    title: 'Password Recovery'
   }},
   { path: '**', component: LogInComponent ,data: {
-    title: 'register'
+    title: 'Shoppingkart  Sign In'
   }},
 
 ];

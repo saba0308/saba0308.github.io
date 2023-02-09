@@ -11,24 +11,30 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent,data: {
-    title: 'admin'
+    title: 'Admin'
   } },
   { path: 'user-list', component: UserListComponent,data: {
-    title: 'admin'
+    title: 'Admin'
   } },
-  {path:'products-list',component:ProductsListComponent,data: {
-    title: 'admin'
-  },
+  {path:'products-list',component:ProductsListComponent,
   children:[
-    {path:'create',component:ProductsCreateComponent},
-  {path:'edit',component:ProductsEditComponent},{
-    path:'**',component:ProductsViewComponent
+    {path:'create',component:ProductsCreateComponent,data: {
+      title: 'Admin'
+    }},
+  {path:'edit',component:ProductsEditComponent,data: {
+    title: 'Admin'
+  }},{
+    path:'**',component:ProductsViewComponent,data: {
+      title: 'Admin'
+    }
   },
-],
+],data: {
+  title: 'Admin'
+}
 
    },
   { path: '**', component: DashboardComponent,data: {
-    title: 'admin'
+    title: 'Admin'
   } }
 ];
 
