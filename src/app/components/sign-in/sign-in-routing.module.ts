@@ -6,10 +6,18 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
 
-  { path: 'sign-up', component: SignUpComponent },
-  { path: 'log-in', component: LogInComponent },
-  { path: 'forgot-passsword', component: ForgotPasswordComponent},
-  { path: '**', component: LogInComponent },
+  { path: 'sign-up', component: SignUpComponent,data: {
+    title: 'register'
+  } },
+  { path: 'log-in', component: LogInComponent ,data: {
+    title: 'register'
+  }},
+  { path: 'forgot-passsword', component: ForgotPasswordComponent,data: {
+    title: 'register'
+  }},
+  { path: '**', component: LogInComponent ,data: {
+    title: 'register'
+  }},
 
 ];
 

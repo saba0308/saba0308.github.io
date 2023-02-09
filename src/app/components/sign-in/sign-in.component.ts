@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 
 import { NavigationEnd, Router, Event } from '@angular/router';
@@ -11,6 +11,7 @@ import { filter } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignInComponent implements OnInit {
+  @Input() name: string;
   tabs: any[] = [
     {
       title: 'Sign Up',

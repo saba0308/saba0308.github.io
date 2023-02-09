@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router,NavigationEnd,Event } from '@angular/router';
 import { TmSidebarService } from '@tmlib/ui-sdk/sidebar';
 import { AuthService } from '../sign-in/services/auth.service';
@@ -10,6 +10,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+  @Input() name: string;
   userdata!: userData;
   items = [
     { title: 'Profile', link: "/user/profile" },

@@ -10,18 +10,26 @@ import { ProductsViewComponent } from './pages/products-list/products-view/produ
 import { UserListComponent } from './pages/user-list/user-list.component';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'user-list', component: UserListComponent },
-  {path:'products-list',component:ProductsListComponent,
+  { path: 'dashboard', component: DashboardComponent,data: {
+    title: 'admin'
+  } },
+  { path: 'user-list', component: UserListComponent,data: {
+    title: 'admin'
+  } },
+  {path:'products-list',component:ProductsListComponent,data: {
+    title: 'admin'
+  },
   children:[
     {path:'create',component:ProductsCreateComponent},
   {path:'edit',component:ProductsEditComponent},{
     path:'**',component:ProductsViewComponent
-  }
-]
+  },
+],
 
    },
-  { path: '**', component: DashboardComponent }
+  { path: '**', component: DashboardComponent,data: {
+    title: 'admin'
+  } }
 ];
 
 @NgModule({

@@ -7,11 +7,21 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { UserComponent } from './user.component';
 
 const routes: Routes = [
-  { path: 'profile', component: ProfileComponent },
-  {path:'products',component:ProductsComponent},
-  {path:'orders',component:OrdersComponent},
-  {path:'cart',component:AddToCartComponent},
-  {path:'**',component:ProductsComponent}
+  { path: 'profile', component: ProfileComponent,data: {
+    title: 'ShoppingKart'
+  } },
+  {path:'products',component:ProductsComponent,data: {
+    title: 'ShoppingKart'
+  }},
+  {path:'orders',component:OrdersComponent,data: {
+    title: 'ShoppingKart'
+  }},
+  {path:'cart',component:AddToCartComponent,data: {
+    title: 'ShoppingKart'
+  }},
+  {path:'**',component:ProductsComponent,data: {
+    title: 'ShoppingKart'
+  }}
 ];
 
 @NgModule({

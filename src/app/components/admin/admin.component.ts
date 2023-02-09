@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit,Inject, OnDestroy, Input } from '@angular/core';
 import { TmSidebarService } from '@tmlib/ui-sdk/sidebar';
 import { TM_WINDOW } from '@tmlib/ui-sdk';
 import{ TmMenuService} from '@tmlib/ui-sdk/menu';
@@ -18,6 +18,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit,OnDestroy  {
+  @Input() name: string;
   currentUser!:string|null;
   items = [
     { title: 'Profile' },
