@@ -25,7 +25,10 @@ id:any;
         productPrice:[this.productsData.productPrice],
         productCategory:[this.productsData.productCategory],
         productDescription:[this.productsData.productDescription], 
-        productImage:[this.productsData.productImage]
+        productImage:[this.productsData.productImage],
+        productOffer:[this.productsData.productOffer],
+        productStatus:[this.productsData.productStatus],
+        productQuantity:[this.productsData.productQuantity]
       }
     )
 

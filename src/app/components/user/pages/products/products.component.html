@@ -1,17 +1,41 @@
-
-<tm-card size="tiny" *ngFor="let product of products">
+<tm-card>
     <tm-card-body>
-        <div class="imageContainer">
-            <img src="{{product.productImage}}" alt="">
-        </div>
-        <div class="detailsContainer">
-             <div> <span>Name:</span>{{product.productName}}</div>
-             <div> <span>Price:</span>{{product.productPrice}}</div>
-             <div> <span>Description:</span>{{product.productDescription}}</div>
+        <div class="container">
+            <button tmButton class="filterModule" (click)="filterData('')">All Products</button>
+            <button tmButton class="filterModule" (click)="filterData('Electronics')">Electronics</button>
+            <button tmButton class="filterModule" (click)="filterData('Fashion')">Fashion</button>
+            <button tmButton class="filterModule" (click)="filterData('Home & kitchen')">Home & kitchen</button>
         </div>
     </tm-card-body>
-    <tm-card-footer>
-        <button tmButton status="primary">Buy Now </button>    
-     </tm-card-footer>
-  </tm-card>
+</tm-card>
 
+<div class="flexContainer">
+
+
+    <tm-card *ngFor="let product of filterProducts">
+        <tm-card-body>
+            <div class="imageContainer">
+                <img src="{{product.productImage}}" alt="">
+            </div>
+            <div class="detailsContainer">
+                <div> <span>Name:</span>{{product.productName}}</div>
+                <div> <span>Price:</span>{{product.productPrice}}</div>
+                <div> <span>Description:</span>{{product.productDescription}}</div>
+                <div><span>Status:</span> <span
+                        [ngStyle]="{'color':(product.productStatus==='Out of stock')?'red':'green'}">{{product.productStatus}}
+                    </span></div>
+                <div><span [ngClass]="getClassofQuantity(product.productQuantity,product.productStatus)">Only
+                        {{product.productQuantity}} Products Left !</span></div>
+            </div>
+            <div [ngClass]=" getClassOf(product.productOffer)">
+                <h6>
+                    {{product.productOffer}} %
+                </h6>
+            </div>
+        </tm-card-body>
+        <tm-card-footer>
+            <button tmButton status="primary">Buy Now </button>
+        </tm-card-footer>
+    </tm-card>
+
+</div>

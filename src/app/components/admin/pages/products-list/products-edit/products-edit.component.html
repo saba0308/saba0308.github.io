@@ -28,7 +28,7 @@
       <div class="form-group">
         <label for=""> Product Price</label>
         <tm-form-field>
-          <input type="number" shape="semi-round" class="form-control" formControlName="productPrice" fullWidth
+          <input type="number" min="0" shape="semi-round" class="form-control" formControlName="productPrice" fullWidth
             placeholder="Price" tmInput [ngClass]="{ 'is-invalid': submitted && f.productPrice.errors }">
           <div *ngIf="submitted && f.productPrice.errors" class="invalid-feedback">
             <div *ngIf="f.productPrice.errors?.required">Product Price is required</div>
@@ -68,6 +68,31 @@
         <img src="{{productsData.productImage}}" alt="">
       </div>
     </div>
+    <div class="container">
+      <div class="form-group">
+        <label for=""> Quantity</label>
+        <tm-form-field>
+          <input type="number" min="0"fullWidth shape="semi-round" tmInput formControlName="productQuantity">
+        </tm-form-field>
+      </div>
+      <div class="form-group">
+        <label for=""> Status</label>
+        <tm-form-field>
+          <tm-select placeholder="Status" shape="semi-round" formControlName="productStatus" fullWidth>
+            <tm-option value="In stock">In stock</tm-option>
+            <tm-option value="Out of stock">Out of stock</tm-option>
+          </tm-select>
+        </tm-form-field>
+      </div>
+    </div>
+    <div  class="container">
+      <div class="form-group">
+      <label for=""> Offer</label>
+      <tm-form-field>
+       <input type="number" min="0" tmInput fullWidth  shape="semi-round" formControlName="productOffer">
+      </tm-form-field>
+    </div>
+      </div>
     <div  class="container">
       <div class="button-group">
       <button (click)="update()" shape="semi-round" tmButton status="primary" fullWidth>Update </button>

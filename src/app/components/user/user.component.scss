@@ -11,13 +11,22 @@ tm-layout {
       width: 100%;
       display: flex;
       justify-content: space-between;
+      div{
+        svg{
+          width: 40px;
+          height:40px;
+          path{
+            fill:var(--text-basic-color)
+          }
+        }
+      }
     }
 
     h1 {
       color: white;
       font-family: 'poppins';
     }
-
+      
     tm-sidebar {
     
 
@@ -48,6 +57,7 @@ tm-layout {
     }
   }
 
+ 
   .sidebar {
 
     // display: flex;
@@ -55,6 +65,7 @@ tm-layout {
     // justify-content: space-between;
     .header {
       display: none;
+    
     }
 
     button {

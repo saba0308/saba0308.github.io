@@ -16,17 +16,22 @@ import { TmInputModule } from '@tmlib/ui-sdk/input';
 import { TmButtonModule } from '@tmlib/ui-sdk/button';
 import { TmSelectModule } from '@tmlib/ui-sdk/select';
 import { ProductsComponent } from './pages/products/products.component';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { TmBadgeModule } from '@tmlib/ui-sdk/badge';
+import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 
 @NgModule({
   declarations: [
     UserComponent,
     ProfileComponent,
-    ProductsComponent
+    ProductsComponent,
+    OrdersComponent,
+    AddToCartComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule, TmLayoutModule, TmSidebarModule.forRoot(), TmUserModule, TmMenuModule, TmContextMenuModule,
-    TmCardModule, FormsModule, ReactiveFormsModule, TmFormFieldModule, TmInputModule, TmButtonModule, TmSelectModule
+    TmCardModule, FormsModule, ReactiveFormsModule, TmFormFieldModule, TmInputModule, TmButtonModule, TmSelectModule,TmBadgeModule
   ]
 })
 export class UserModule { }

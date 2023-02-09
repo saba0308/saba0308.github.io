@@ -21,7 +21,10 @@ export class ProductsCreateComponent implements OnInit {
         productPrice:['',Validators.required],
         productCategory:[""],
         productDescription:[""], 
-        productImage:["",Validators.required]
+        productImage:["",Validators.required],
+        productOffer:[""],
+        productStatus:[""],
+        productQuantity:[""]
       }
     )
 
@@ -38,10 +41,25 @@ export class ProductsCreateComponent implements OnInit {
       }
     }
   }
+  productCategory:Object[] = [
+    { Id: 1, Game: 'American Football' },
+    { Id: 2, Game: 'Badminton' },
+    { Id: 3, Game: 'Basketball' },
+    { Id: 4, Game: 'Cricket' },
+    { Id: 5, Game: 'Football' },
+    { Id: 6, Game: 'Golf' },
+    { Id: 7, Game: 'Hockey' },
+    { Id: 8, Game: 'Rugby' },
+    { Id: 9, Game: 'Snooker' },
+    { Id: 10, Game: 'Tennis' }
+];
+ public fields: Object = { text: 'Game', value: 'Id' };
 
-
-
-
+  onChange(args: any): void {
+    if(this.productForm.value.productQuantity==0){
+          this.productForm.value.productStatus=='Out of Stock'
+    }
+}
   // user register
  createProduct() {
     this.submitted = true;

@@ -1,0 +1,29 @@
+tm-card{
+    width: 100%;
+    height:500px;
+    tm-card-body{
+        .container{
+            table {
+                width: 100%;
+              tr:nth-child(1){
+                  background-color:var(--text-basic-color);
+                  color: var(--header-background-color) ;
+              }
+              th,td{
+                padding: 5px;
+              }
+            }
+           
+        }
+    }
+    .noProducts{
+        position: relative;
+        top:20%;
+        left:35%;
+     
+       h4{
+        font-weight: 300;
+       }
+       
+    }
+}
