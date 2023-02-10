@@ -7,9 +7,9 @@ import { userData,usersdata} from '../userData';
 @Injectable({
   providedIn: 'root'
 })
-
+//http:localhost:3000 https://template-json-server.vercel.app/api
 export class AuthService {
-  private apiServer = "https://template-json-server.vercel.app/api";
+  private apiServer = "http://localhost:3000";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

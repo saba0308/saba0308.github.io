@@ -10,6 +10,7 @@ import { TmToastrService,TmToastrConfig } from '@tmlib/ui-sdk/toastr';
 import { TmGlobalLogicalPosition,TmGlobalPhysicalPosition,TmGlobalPosition, } from '@tmlib/ui-sdk';
 import { TmComponentStatus } from '@tmlib/ui-sdk/helpers';
 import { AuthService } from '../services/auth.service';
+import { EncryptionService } from '../../services/encrypt-decrypt/encryption.service';
 import { TmDialogService } from '@tmlib/ui-sdk/dialog';
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +20,7 @@ import { TmDialogService } from '@tmlib/ui-sdk/dialog';
 export class SignUpComponent implements OnInit {
   signUpForm!: FormGroup;
   submitted = false;
-  constructor(private formBuilder: FormBuilder,private router:Router,private apiService:AuthService) { }
+  constructor( private encryption: EncryptionService,private formBuilder: FormBuilder,private router:Router,private apiService:AuthService) { }
   private index: number = 0;
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group(
@@ -31,6 +32,7 @@ export class SignUpComponent implements OnInit {
       }
     )
 
+   
   }
   showPassword = true;
 
@@ -50,6 +52,7 @@ export class SignUpComponent implements OnInit {
     if (this.signUpForm.invalid) {
       return;
     }
+    this.signUpForm.value.password=this.encryption.encryptUsingTripleDES(this.signUpForm.value.password, true);
     this.apiService.create(this.signUpForm.value).subscribe((res:any) => {
      
     }) 

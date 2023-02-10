@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TmDialogService } from '@tmlib/ui-sdk/dialog';
+import { EncryptionService } from '../../services/encrypt-decrypt/encryption.service';
 import { AuthService } from '../services/auth.service';
 import { userData } from '../userData';
 
@@ -22,11 +23,12 @@ export class LogInComponent implements OnInit {
   userdata:userData;
 
   id:any;
-  constructor(private formBuilder: FormBuilder, private router: Router, private _http: HttpClient,private apiService:AuthService) {
+  constructor(private encryption: EncryptionService,private formBuilder: FormBuilder, private router: Router, private _http: HttpClient,private apiService:AuthService) {
     
    }
 
   ngOnInit(): void {
+   console.log( this.encryption.encryptUsingTripleDES('123456', true))
     this.signInForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -56,7 +58,8 @@ export class LogInComponent implements OnInit {
   }
   signIn() {
     this.submitted = true;
-
+    this.signInForm.value.password=this.encryption.encryptUsingTripleDES(this.signInForm.value.password, true);
+   
     if (this.signInForm.invalid) {
       return;
     }
@@ -64,7 +67,7 @@ export class LogInComponent implements OnInit {
     else {
       this.router.navigate(['auth/log-in']);
     }
-    this._http.get<userData[]>("https://template-json-server.vercel.app/api/usersData")
+    this._http.get<userData[]>("http://localhost:3000/usersData")
       .subscribe(res => {
         const user = res.find((a: userData) => {
           return a.email === this.signInForm.value.email && a.password === this.signInForm.value.password
@@ -84,7 +87,7 @@ export class LogInComponent implements OnInit {
           console.log(user.status);
           this.router.navigate(['/user/products']);
         }
-        else if (this.f.email.value == 'admin123@gmail.com' && this.f.password.value == 'admin@123') {
+        else if (this.f.email.value == 'admin123@gmail.com' && this.f.password.value == '7Uin7bFhkg0LYSGOqPmTnw==') {
           const uservalue = this.signInForm.value.email;
           localStorage.setItem('isAdminLoggedIn', "true");
           localStorage.setItem('adminValue', uservalue);

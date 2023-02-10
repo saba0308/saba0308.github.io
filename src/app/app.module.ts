@@ -24,10 +24,12 @@ import { AdminModule } from './components/admin/admin.module';
 import { DateAgoPipe } from './components/pipes/date-ago.pipe';
 import { SortPipe } from './components/pipes/sort.pipe';
 import { APP_BASE_HREF } from '@angular/common';
+import {  EncryptPipe, DecryptPipe } from './components/pipes/encrypt-decrypt/encrypt-decrypt.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+ 
 
     
   ],
@@ -39,7 +41,7 @@ import { APP_BASE_HREF } from '@angular/common';
     TmMenuModule,TmContextMenuModule,
   
   ],
-  providers: [Title],
+  providers: [Title, EncryptPipe, DecryptPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
