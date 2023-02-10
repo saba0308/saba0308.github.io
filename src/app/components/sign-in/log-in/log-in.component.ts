@@ -87,7 +87,7 @@ export class LogInComponent implements OnInit {
           console.log(user.status);
           this.router.navigate(['/user/products']);
         }
-        else if (this.f.email.value == 'admin123@gmail.com' && this.f.password.value == '7Uin7bFhkg0LYSGOqPmTnw==') {
+        else if (this.f.email.value == 'admin123@gmail.com' && this.f.password.value == 'admin@123') {
           const uservalue = this.signInForm.value.email;
           localStorage.setItem('isAdminLoggedIn', "true");
           localStorage.setItem('adminValue', uservalue);
