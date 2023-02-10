@@ -95,7 +95,7 @@ export class AddToCartComponent implements OnInit {
     this.checkout=!this.checkout;
   }
   order(){
-    this.http.post<order[]>('http://localhost:3000/order', JSON.stringify(this.checkoutForm.value))
+    this.http.post<order[]>('https://template-json-server.vercel.app/api', JSON.stringify(this.checkoutForm.value))
     console.log(this.checkoutForm.value)
     this.items = this.cartService.clearCart(this.items);
     this.checkoutForm.reset();

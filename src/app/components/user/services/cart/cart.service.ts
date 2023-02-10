@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 
 export class CartService {
-  private apiServer = "http://localhost:3000";
+  private apiServer = "https://template-json-server.vercel.app/api";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
