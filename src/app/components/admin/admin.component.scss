@@ -322,7 +322,7 @@ tm-layout {
     }
 }
 
-@media screen and (max-width: 600px) and (min-width:0px) {
+@media screen and (max-width: 600px) and (min-width:500px) {
     tm-layout {
         tm-layout-header {
             .headerContainer {
@@ -346,7 +346,38 @@ tm-layout {
             .sidebar-slider {
                 position: fixed;
                 top: 0;
-                left: 25%;
+               right:-200px;
+                bottom: 0;
+               
+            }
+        }
+    }
+}
+@media screen and (max-width: 500px) and (min-width:400px) {
+    tm-layout {
+        tm-layout-header {
+            .headerContainer {
+                .headercontent {
+                    display: none;
+                }
+            }
+        }
+
+        tm-sidebar {
+            display: flex;
+            flex-flow: column;
+            gap: 50px;
+
+            .headercontent {
+                font-family: 'Akronim';
+                display: block;
+            }
+        }
+        tm-layout-column{
+            .sidebar-slider {
+                position: fixed;
+                top: 0;
+              right: -50%;
                 bottom: 0;
                
             }

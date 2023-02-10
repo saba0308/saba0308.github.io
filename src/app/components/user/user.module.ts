@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
@@ -19,6 +19,8 @@ import { ProductsComponent } from './pages/products/products.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { TmBadgeModule } from '@tmlib/ui-sdk/badge';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,16 @@ import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
     ProfileComponent,
     ProductsComponent,
     OrdersComponent,
-    AddToCartComponent
+    AddToCartComponent,
+    ProductDetailsComponent
   ],
   imports: [
-    CommonModule,
+    CommonModule,HttpClientModule,
     UserRoutingModule, TmLayoutModule, TmSidebarModule.forRoot(), TmUserModule, TmMenuModule, TmContextMenuModule,
     TmCardModule, FormsModule, ReactiveFormsModule, TmFormFieldModule, TmInputModule, TmButtonModule, TmSelectModule,TmBadgeModule
-  ]
+  ],
+  providers: [
+    CurrencyPipe
+]
 })
 export class UserModule { }

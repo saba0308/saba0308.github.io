@@ -1,32 +1,82 @@
-<tm-card>
+<tm-card *ngIf="!checkout">
     <tm-card-body>
-        <!-- <div class="container">
-           <table>
-             <tr>
-                <th>S.No</th>
-                <th>Image</th>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-             </tr>
-             <tr>
-                <td>S.No</td>
-                <td>Image</td>
-                <td>Product Name</td>
-                <td>Price</td>
-                <td>Quantity</td>
-                <td>SubTotal</td>
-             </tr>
-             <tr>
-                <td colspan="5" >Total</td>
-                <td></td>
-            </tr>
-           </table>
-        </div> -->
-        <div class="noProducts">
-            <img src="../../../../../assets/6011.jpg "alt="" width="200px">
+        <div class="container" *ngIf="items.length!=0">
+            <table>
+                <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Sub Total</th>
+                    <td></td>
+                </tr>
+                <tr *ngFor="let item of items;let i = index">
+
+                    <td><img src="{{item.productImage}}" width="80px" height="80px" alt=""></td>
+                    <td>{{item.productName}}</td>
+                    <td>{{item.productPrice}}</td>
+                    <td width="20px"> <input tmInput  [(ngModel)]="item.qtyTotal" [ngModelOptions]="{standalone: true}" min="1" type="number"
+                            value="{{ item.qtyTotal }}" name="" class="form-control"
+                            (change)="changeSubtotal(item ,i)" /></td>
+                    <td #subTotalWrap>{{item.productPrice | currency }}</td>
+                    <td> <button class="btn btn-danger" (click)="removeFromCart(item)"> x</button></td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
+                    <td>Total</td>
+                    <td>
+                        {{total | currency}}
+                        
+                    </td>
+<td></td>
+                </tr>
+        <tr>
+            <td colspan="4">
+                
+            </td>
+            <td><button class="btn btn-success " (click)="checkOut()"> check out</button></td>
+            <td><button class="btn btn-primary " (click)="clearCart(items)"> Clear Items</button> </td>
+        </tr>
+            </table>
+        </div>
+        <div class="noProducts" *ngIf="items.length===0">
+            <img src="../../../../../assets/6011.jpg " alt="" width="200px">
             <h4>Your Cart Is Empty</h4>
+        </div>
+    </tm-card-body>
+</tm-card>
+
+
+<tm-card *ngIf="checkout">
+    <tm-card-body>
+        <h2>Check Out</h2>
+        <div class="checkoutContainer">
+            
+            <form class="checkoutForm" [formGroup]="checkoutForm" >
+
+                <div>
+                  <label for="name">
+                    Name
+                  </label>
+                  <input tmInput fullWidth id="email" type="text" formControlName="email">
+                </div>
+              
+                <div>
+                  <label for="address">
+                    Address
+                  </label>
+                  <textarea tmInput fullWidth id="address" placeholder="address" formControlName="address"></textarea>
+                </div>
+              
+               
+              <div class="buttonGroup">
+                <button tmButton status="success" class="button"  (click)="order()">Order</button>
+                <button tmButton (click)="checkOut()" status="primary">
+                    cancel
+                  </button>
+              </div>
+              </form>
+            
         </div>
     </tm-card-body>
 </tm-card>

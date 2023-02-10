@@ -3,7 +3,10 @@ tm-card {
     width:100%;
 
     tm-card-body {
-
+      
+   .focuStyle:focus{
+        border: rgb(37, 180, 236);
+     }
         .productForm {
             display: flex;
             flex-direction: column;

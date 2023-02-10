@@ -3,6 +3,8 @@ import { Router,NavigationEnd,Event } from '@angular/router';
 import { ProductService } from 'src/app/components/admin/services/products/product.service';
 import { productData } from 'src/app/components/model/product';
 import { filter } from 'rxjs/operators';
+import { CartService } from '../../services/cart/cart.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -10,7 +12,7 @@ import { filter } from 'rxjs/operators';
 })
 export class ProductsComponent implements OnInit {
 message:string;
-  constructor(private apiService:ProductService,private router:Router) { 
+  constructor(private apiService:ProductService,private http: HttpClient,private router:Router,private cartService:CartService) { 
    
   }
   // products list
@@ -19,12 +21,23 @@ message:string;
   ngOnInit(): void {
     this.getAllData();
   }
+   items = [];
   getAllData() {
     this.apiService.getAll().subscribe((data: productData[]) => {
       console.log(data);
       this.products = data;
       this.filterProducts=data;
     })
+  }
+  addToCart(item) {
+    
+    if (!this.cartService.itemInCart(item)) {
+      item.qtyTotal = 1;
+      // this.http.post<any>( 'http://localhost:3000/cartProducts/', JSON.stringify(item))
+      this.cartService.addToCart(item); //add items in cart
+      this.items = [...this.cartService.getItems()];
+    
+    }
   }
   filterData(data:string){
     this.filterProducts=this.products.filter((p)=>p.productCategory===data || data==='')

@@ -11,15 +11,22 @@ export interface productData{
     productOffer:string;
 }
 export interface cartProduct{
-    id:number;
-    productCode:string;
-    productName:string;
+        id:number;
+        productCode:string;
+        productName:string;
+        productPrice:number;
+        productCategory:string;
+        productDescription:string;
+        productImage:any;
+        productStatus:string;
+        productOffer:string;
+        quantity:number; 
+        qtyTotal:number;
+        subTotal:number;
+}
+export interface orderHistory{
     email:string;
-    productPrice:number;
-    productCategory:string;
-    productDescription:string;
-    productImage:any;
-    quantity:number;
+    orders:cartProduct;
 }
 export interface order{
     id:number;

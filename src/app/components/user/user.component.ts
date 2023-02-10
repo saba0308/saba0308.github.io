@@ -4,6 +4,7 @@ import { TmSidebarService } from '@tmlib/ui-sdk/sidebar';
 import { AuthService } from '../sign-in/services/auth.service';
 import { userData } from '../sign-in/userData';
 import { filter } from 'rxjs/operators';
+import { CartService } from './services/cart/cart.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -16,8 +17,9 @@ export class UserComponent implements OnInit {
     { title: 'Profile', link: "/user/profile" },
     { title: 'Logout', link: "/auth/log-in" },
   ];
+  products;
   message:string;
-  constructor(private router: Router, private apiService: AuthService, private sidebarService: TmSidebarService) {
+  constructor(private router: Router,private cartService:CartService, private apiService: AuthService, private sidebarService: TmSidebarService) {
     router.events
     .pipe(filter((e: Event): e is NavigationEnd => e instanceof NavigationEnd))
     .subscribe((res: NavigationEnd) => {
@@ -41,7 +43,7 @@ export class UserComponent implements OnInit {
     this.id = this.userdata.id;
     // online Status
     this.statusData();
-    
+    this.getCount()
   }
   toggle() {
     this.sidebarService.toggle(false, 'left');
@@ -70,5 +72,10 @@ export class UserComponent implements OnInit {
     console.log('Post updated successfully!');
   }
 
-
+getCount(){
+ if(this.cartService.getItems()||this.cartService.clearCart(this.products)||this.cartService.removeItem(this.products)){
+     this.products=JSON.parse(localStorage.getItem('cart_items') || '{}');
+ }
+ 
+}
 }
