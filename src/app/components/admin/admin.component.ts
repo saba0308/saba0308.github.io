@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit,Inject, OnDestroy, Input, TemplateRef } from '@angular/core';
 import { TmSidebarService } from '@tmlib/ui-sdk/sidebar';
 import { TM_WINDOW } from '@tmlib/ui-sdk';
 import{ TmMenuService} from '@tmlib/ui-sdk/menu';
@@ -12,6 +12,7 @@ import { NavigationEnd, Router,Event  } from '@angular/router';
 import { userData } from '../sign-in/userData';
 import { AuthService } from '../sign-in/services/auth.service';
 import { filter } from 'rxjs/operators';
+import { TmDialogService } from '@tmlib/ui-sdk/dialog';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -50,7 +51,7 @@ export class AdminComponent implements OnInit,OnDestroy  {
   message:string;
   id!: string | null;
   constructor(private router:Router,private dataService:DataService,private sidebarService: TmSidebarService,private tmMenuService: TmMenuService, private themeService: TmThemeService,
-    private breakpointService: TmMediaBreakpointsService,private translate: TranslateService,private apiService:AuthService) { translate.setDefaultLang('en');
+    private breakpointService: TmMediaBreakpointsService,private translate: TranslateService,private apiService:AuthService,private dialogService:TmDialogService) { translate.setDefaultLang('en');
     this.englishButton = true;
     router.events
       .pipe(filter((e: Event): e is NavigationEnd => e instanceof NavigationEnd))
@@ -125,11 +126,10 @@ tag:string;
 
     if(this.direction=='rtl')
     {
-     this.tag="left";
     this.sidebarService.toggle(false, 'left');
     }
     else if(this.direction=='ltr'){
-      this.tag="right";
+   
       this.sidebarService.toggle(false, 'right');
     }
   }
@@ -141,9 +141,11 @@ tag:string;
     if(checked)
     {
       this.direction = 'rtl';
+      this.tag="left";
     }
    else{
     this.direction = 'ltr';
+    this.tag="right";
    }
      
     
@@ -201,5 +203,7 @@ corporate(checked:boolean){
     localStorage.removeItem('adminValue');
     this.router.navigate(['/auth/log-in'])
   }
-  
+  open(dialog: TemplateRef<any>) {
+    this.dialogService.open(dialog, { context: ' Do You Want Logout?' });
+  }
 }

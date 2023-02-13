@@ -33,7 +33,9 @@ tm-layout {
 
     tm-sidebar {
         background-color: $background-color;
-
+        button{
+            display: none;
+          }
         .headercontent {
             font-family: 'Akronim';
             display: none;
@@ -143,6 +145,10 @@ tm-layout {
 
         //     }
         // }
+    }
+    [dir=rtl] tm-sidebar{
+        position: relative;
+        left: 20%;
     }
 
     tm-layout-column:nth-child(1) {
@@ -299,28 +305,28 @@ tm-layout {
     }
 }
 
-@media screen and (max-width: 600px) and (min-width:0px) {
-    tm-layout {
-        tm-layout-header {
-            .headerContainer {
-                .headercontent {
-                    display: none;
-                }
-            }
-        }
+// @media screen and (max-width: 600px) and (min-width:0px) {
+//     tm-layout {
+//         tm-layout-header {
+//             .headerContainer {
+//                 .headercontent {
+//                     display: none;
+//                 }
+//             }
+//         }
 
-        tm-sidebar {
-            display: flex;
-            flex-flow: column;
-            gap: 50px;
+//         tm-sidebar {
+//             display: flex;
+//             flex-flow: column;
+//             gap: 50px;
 
-            .headercontent {
-                font-family: 'Akronim';
-                display: block;
-            }
-        }
-    }
-}
+//             .headercontent {
+//                 font-family: 'Akronim';
+//                 display: block;
+//             }
+//         }
+//     }
+// }
 
 @media screen and (max-width: 600px) and (min-width:500px) {
     tm-layout {
@@ -336,20 +342,28 @@ tm-layout {
             display: flex;
             flex-flow: column;
             gap: 50px;
-
+          button{
+            display: block;
+          }
             .headercontent {
                 font-family: 'Akronim';
                 display: block;
             }
         }
+        [dir=rtl]tm-sidebar{
+            
+            right:-80%
+
+        }
         tm-layout-column{
             .sidebar-slider {
                 position: fixed;
                 top: 0;
-               right:-200px;
+                right:-200px;
                 bottom: 0;
                
             }
+            
         }
     }
 }
@@ -367,7 +381,9 @@ tm-layout {
             display: flex;
             flex-flow: column;
             gap: 50px;
-
+            button{
+                display: block;
+              }
             .headercontent {
                 font-family: 'Akronim';
                 display: block;
@@ -377,8 +393,108 @@ tm-layout {
             .sidebar-slider {
                 position: fixed;
                 top: 0;
-              right: -50%;
+                right: -50%;
                 bottom: 0;
+               
+            }
+        }
+    }
+}
+@media screen and (max-width: 400px) and (min-width:300px) {
+    tm-layout {
+        tm-layout-header {
+            .headerContainer {
+                .headercontent {
+                    display: none;
+                }
+            }
+        }
+
+        tm-sidebar {
+            display: flex;
+            flex-flow: column;
+            gap: 50px;
+            button{
+                display: block;
+              }
+            .headercontent {
+                font-family: 'Akronim';
+                display: block;
+            }
+        }
+        tm-layout-column{
+            .sidebar-slider {
+                position: fixed;
+                top: 0;
+                right: -60%;
+                bottom: 0;
+                width: 180px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 300px) and (min-width:200px) {
+    tm-layout {
+        tm-layout-header {
+            .headerContainer {
+                .headercontent {
+                    display: none;
+                }
+            }
+        }
+
+        tm-sidebar {
+            display: flex;
+            flex-flow: column;
+            gap: 50px;
+            button{
+                display: block;
+              }
+            .headercontent {
+                font-family: 'Akronim';
+                display: block;
+            }
+        }
+        tm-layout-column{
+            .sidebar-slider {
+                position: fixed;
+                top: 0;
+                right: -50%;
+                bottom: 0;
+                width: 80px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 200px) and (min-width:0px) {
+    tm-layout {
+        tm-layout-header {
+            .headerContainer {
+                .headercontent {
+                    display: none;
+                }
+            }
+        }
+
+        tm-sidebar {
+            display: flex;
+            flex-flow: column;
+            gap: 50px;
+            button{
+                display: block;
+              }
+            .headercontent {
+                font-family: 'Akronim';
+                display: block;
+            }
+        }
+        tm-layout-column{
+            .sidebar-slider {
+                position: fixed;
+                top: 0;
+                right: -60%;
+                bottom: 0;
+                width: 120px;
                
             }
         }

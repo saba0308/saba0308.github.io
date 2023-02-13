@@ -28,8 +28,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     translate.setDefaultLang('en');
 
   }
+userCount;
 // usersCount=this.usersData.length;
   ngOnInit(): void {
+   
     this.subscription = this.dataService.getMessage().subscribe(message => {
       this.lang = message
       console.log(this.lang);

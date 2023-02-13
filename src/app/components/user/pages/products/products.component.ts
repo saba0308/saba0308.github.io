@@ -39,6 +39,7 @@ message:string;
     
     }
   }
+  selectedItem=" ";
   filterData(data:string){
     this.filterProducts=this.products.filter((p)=>p.productCategory===data || data==='')
   } 

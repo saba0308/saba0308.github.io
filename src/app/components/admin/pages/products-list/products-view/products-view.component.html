@@ -6,22 +6,24 @@
         <table>
             <thead>
                 <tr>
-                    <th>Product Id</th>
-                    <th>Product Image</th>
-                    <th>Product Name</th>
-                    <th>Product Price</th>
-                    <th>Product quantity</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th scope="col">Product Id</th>
+                    <th scope="col">Product Image</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Price</th>
+                    <th scope="col">Product quantity</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
                 </tr>
-                <tr *ngFor="let productData of productData">
-                    <td>{{productData.productCode}}</td>
-                    <td> <img src="{{productData.productImage}}" width="80px" height="80px" alt="error"></td>
-                    <td>{{productData.productName}}</td>
-                    <td>${{productData.productPrice}}</td>
-                    <td>{{productData.productQuantity}}</td>
-                    <td>{{productData.productStatus}}</td>
-                    <td style="display: flex;padding: 20px;gap:6px;">
+            </thead>
+            <tbody>
+                <tr  *ngFor="let productData of productData">
+                    <td scope="row" data-label="Product Id">{{productData.productCode}}</td>
+                    <td scope="row" data-label="Product Image"> <img src="{{productData.productImage}}" width="80px" height="80px" alt="error"></td>
+                    <td scope="row"data-label="Product Name">{{productData.productName}}</td>
+                    <td scope="row"data-label="Product Price">${{productData.productPrice}}</td>
+                    <td scope="row" data-label="Product quantity">{{productData.productQuantity}}</td>
+                    <td scope="row" data-label="Status">{{productData.productStatus}}</td>
+                    <td  scope="row" data-label="Action" style="display: flex;padding: 20px;gap:6px;">
                         <button (click)="edit(productData)" tmButton status="success" style="padding: 5px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="Iconly/Light/Edit">
                         <g id="Edit">
@@ -46,7 +48,7 @@
                                 
                           </button></td>
                 </tr>
-            </thead>
+            </tbody>
             
         </table>
     </tm-card-body>

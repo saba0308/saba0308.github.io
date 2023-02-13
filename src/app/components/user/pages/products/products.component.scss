@@ -75,8 +75,12 @@ tm-card {
     width: 100%;
 
     tm-card-body {
+        .dropdown{
+            display: none;
+        }
         .container {
             display: flex;
+            flex-flow: row wrap;
             gap: 10px;
 
             .filterModule {
@@ -96,4 +100,18 @@ tm-card {
         }
 
     }
+}
+@media screen and (max-width:600px) and (min-width:0px){
+tm-card{
+    width:100%;
+    tm-card-body{
+        
+        .dropdown{
+            display: block;
+        }
+        .container{
+            display:none;
+        }
+    }
+}
 }

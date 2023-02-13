@@ -20,14 +20,14 @@
             </h1>
             <div style=" display: flex;height:40px ;">
                 <tm-user [tmContextMenu]="items" name={{userdata.userName}} title="{{userdata.email}}"></tm-user>
-                <button (click)="logOut()" tmButton>logout</button>
+                <button (click)="open(dialog)" tmButton>logout</button>
             </div>
 
         </div>
 
     </tm-layout-header>
     <tm-layout-header style="background:white; position: relative;" subheader>
-        <div class="header">
+        <div class="subHeader">
             <h2>{{message}}</h2>
    
             <div>
@@ -102,13 +102,26 @@
                        My Orders</a>
             </li>
         </ul>
-        <button (click)="logOut()" tmButton>logout</button>
+        <button (click)="open(dialog)" tmButton>logout</button>
     </tm-sidebar>
     <tm-layout-column>
         <router-outlet></router-outlet>
         <footer>
             <div>© 2022 ShoppingKart</div>
           </footer>
+          <ng-template #dialog let-data let-ref="dialogRef">
+            <tm-card style="padding: 10px; width:250px;">
+          
+              <tm-card-body>{{ data }}</tm-card-body>
+             <div class="d-flex justify-content-end gap-3" >
+                <button tmButton status="primary" (click)="logOut()">Yes</button>
+                <button tmButton (click)="ref.close()"> Cancel</button>
+             </div>
+             
+            
+            </tm-card>
+          </ng-template>
     </tm-layout-column>
 
 </tm-layout>
+

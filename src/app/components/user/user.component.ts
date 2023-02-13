@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef  } from '@angular/core';
 import { Router,NavigationEnd,Event } from '@angular/router';
 import { TmSidebarService } from '@tmlib/ui-sdk/sidebar';
 import { AuthService } from '../sign-in/services/auth.service';
 import { userData } from '../sign-in/userData';
 import { filter } from 'rxjs/operators';
 import { CartService } from './services/cart/cart.service';
+import { TmDialogService } from '@tmlib/ui-sdk/dialog';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -19,7 +20,7 @@ export class UserComponent implements OnInit {
   ];
   products;
   message:string;
-  constructor(private router: Router,private cartService:CartService, private apiService: AuthService, private sidebarService: TmSidebarService) {
+  constructor(private router: Router,private cartService:CartService,private dialogService: TmDialogService, private apiService: AuthService, private sidebarService: TmSidebarService) {
     router.events
     .pipe(filter((e: Event): e is NavigationEnd => e instanceof NavigationEnd))
     .subscribe((res: NavigationEnd) => {
@@ -77,5 +78,8 @@ getCount(){
      this.products=JSON.parse(localStorage.getItem('cart_items') || '{}');
  }
  
+}
+open(dialog: TemplateRef<any>) {
+  this.dialogService.open(dialog, { context: ' Do You Want Logout?' });
 }
 }

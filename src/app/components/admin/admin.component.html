@@ -17,7 +17,7 @@
 
       <div class="headercontent">
         <tm-user [tmContextMenu]="items" name={{currentUser}} title="Engineer"></tm-user>
-        <button tmButton style="height:40px" (click)="logOut()">Log out</button>
+        <button tmButton style="height:40px" (click)="open(dialog)">Log out</button>
 
       </div>
       <ng-template #template let-data>
@@ -35,7 +35,7 @@
   <tm-layout-header subheader>
  <h3>{{message}}</h3>
   </tm-layout-header>
-  <tm-sidebar tag="{{tag}}" responsive state="expanded">
+  <tm-sidebar tag="{{tag}}" responsive [compactedBreakpoints]="['xs', 'is']">
 
     <h1 class="headercontent">{{"admin.header.title" | translate}}</h1>
     <div class="headercontent">
@@ -87,6 +87,7 @@
       </li>
     </ul>
     <!-- <div (click)="logOut()">Log out</div>   -->
+    <button (click)="open(dialog)" tmButton>logout</button>
   </tm-sidebar>
 
   <!-- <tm-sidebar right tag="right" responsive state="collapsed">
@@ -171,6 +172,18 @@
     <footer>
       <div>© 2022 Architect UI</div>
     </footer>
+    <ng-template #dialog let-data let-ref="dialogRef">
+      <tm-card style="padding: 10px; width:400px;">
+    
+        <tm-card-body>{{ data }}</tm-card-body>
+       <div class="d-flex justify-content-end gap-3" >
+          <button tmButton status="primary" (click)="logOut()">Yes</button>
+          <button tmButton (click)="ref.close()"> Cancel</button>
+       </div>
+       
+      
+      </tm-card>
+    </ng-template>
   </tm-layout-column>
   <!-- <tm-sidebar tag="right" responsive>
         <div>Layout Settings</div>

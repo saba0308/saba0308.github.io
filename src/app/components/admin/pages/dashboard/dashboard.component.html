@@ -161,21 +161,29 @@
             [tmSearchOption]="'hitSubmit'" [tmTotalPageCount]="10" [tmTotalRecords]="100"
             (tmGridSorting)="gridSorting($event)" (tmGridSearch)="gridSearch($event)"></tm-grid> -->
             <table>
+                <thead>
                 <tr>
-                    <th>User Name</th>
-                    <th>Email </th>
-                    <th>Phone Number</th>
-                    <th >Last Login</th>
-                    <th >Status</th>
+                   
+                  
+                    <th scope="col">User Name</th>
+                    <th scope="col">Email </th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Last Login</th>
+                    <th scope="col" >Status</th>
+                          
+               
                 </tr>
+            </thead>
+            <tbody>
                 <tr *ngFor="let usersData of usersData">
-                    <td>{{usersData.userName}}</td>
-                    <td>{{usersData.email}}</td>
-                    <td>{{usersData.phoneNumber}}</td>
-                    <td>{{usersData.lastSeen | dateAgo}}</td>
-                    <td>{{usersData.status }}</td>
+                    <td scope="row" data-label="User Name">{{usersData.userName}}</td>
+                    <td scope="row" data-label="Email">{{usersData.email}}</td>
+                    <td scope="row" data-label="Phone Number">{{usersData.phoneNumber}}</td>
+                    <td scope="row" data-label="Last Login">{{usersData.lastSeen | dateAgo}}</td>
+                    <td scope="row" data-label="Status">{{usersData.status }}</td>
                   
                 </tr>
+            </tbody>
             </table>
 
         </tm-card-body>

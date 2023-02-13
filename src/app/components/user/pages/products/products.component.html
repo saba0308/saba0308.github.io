@@ -6,6 +6,14 @@
             <button tmButton class="filterModule" (click)="filterData('Fashion')">Fashion</button>
             <button tmButton class="filterModule" (click)="filterData('Home & kitchen')">Home & kitchen</button>
         </div>
+        <div class="dropdown">
+            <tm-select placeholder="Filter By" [ngModel]="selectedItem" (ngModelChange)="filterData($event)">
+                <tm-option value=" ">All Products</tm-option>
+                <tm-option value="Electronics">Electronics</tm-option>
+                <tm-option value="Fashion">Fashion</tm-option>
+                <tm-option value="Home & kitchen">Home & kitchen</tm-option>
+            </tm-select>
+        </div>
     </tm-card-body>
 </tm-card>
 

@@ -25,6 +25,7 @@ import { DateAgoPipe } from './components/pipes/date-ago.pipe';
 import { SortPipe } from './components/pipes/sort.pipe';
 import { APP_BASE_HREF } from '@angular/common';
 import {  EncryptPipe, DecryptPipe } from './components/pipes/encrypt-decrypt/encrypt-decrypt.pipe';
+import { config } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {  EncryptPipe, DecryptPipe } from './components/pipes/encrypt-decrypt/en
     AppRoutingModule,
    AdminModule.forRoot(),
     TmLayoutModule,TmSidebarModule.forRoot(),
-    TmMenuModule,TmContextMenuModule,
+    TmMenuModule,TmContextMenuModule,TmDialogModule.forRoot(),
   
   ],
   providers: [Title, EncryptPipe, DecryptPipe],
