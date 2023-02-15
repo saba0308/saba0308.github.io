@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule,Title } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TmThemeModule } from '@tmlib/ui-sdk';
@@ -36,10 +37,10 @@ import { config } from 'rxjs';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-   AdminModule.forRoot(),
+    AppRoutingModule,BrowserAnimationsModule,
+    AdminModule.forRoot(),
     TmLayoutModule,TmSidebarModule.forRoot(),
-    TmMenuModule,TmContextMenuModule,TmDialogModule.forRoot(),
+    TmMenuModule,TmContextMenuModule,TmDialogModule.forRoot(),TmToastrModule.forRoot()
   
   ],
   providers: [Title, EncryptPipe, DecryptPipe],

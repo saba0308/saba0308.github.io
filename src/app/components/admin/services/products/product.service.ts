@@ -46,6 +46,13 @@ export class ProductService {
     return this.httpClient.delete<productData>(this.apiServer + '/products/' + pid,this.httpOptions)
    
   }
+  postOrder(data:any):Observable<any> 
+  {
+   return this.http.post<any>(  'http://localhost:3000/order/', JSON.stringify(data), this.httpOptions)
+   .pipe(
+     catchError(this.errorHandler)
+   )
+  }
   errorHandler(error:any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

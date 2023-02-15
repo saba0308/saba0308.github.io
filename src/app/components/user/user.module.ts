@@ -21,7 +21,7 @@ import { TmBadgeModule } from '@tmlib/ui-sdk/badge';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import{TmAutocompleteModule} from '@tmlib/ui-sdk/autocomplete'
 @NgModule({
   declarations: [
     UserComponent,
@@ -34,7 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,HttpClientModule,
     UserRoutingModule, TmLayoutModule, TmSidebarModule.forRoot(), TmUserModule, TmMenuModule, TmContextMenuModule,
-    TmCardModule, FormsModule, ReactiveFormsModule, TmFormFieldModule, TmInputModule, TmButtonModule, TmSelectModule,TmBadgeModule
+    TmCardModule, FormsModule, ReactiveFormsModule, TmFormFieldModule, TmInputModule, TmButtonModule, TmSelectModule,TmBadgeModule,TmAutocompleteModule
   ],
   providers: [
     CurrencyPipe

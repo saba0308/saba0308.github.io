@@ -12,6 +12,7 @@ import { TmComponentStatus } from '@tmlib/ui-sdk/helpers';
 import { AuthService } from '../services/auth.service';
 import { EncryptionService } from '../../services/encrypt-decrypt/encryption.service';
 import { TmDialogService } from '@tmlib/ui-sdk/dialog';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -20,7 +21,7 @@ import { TmDialogService } from '@tmlib/ui-sdk/dialog';
 export class SignUpComponent implements OnInit {
   signUpForm!: FormGroup;
   submitted = false;
-  constructor( private encryption: EncryptionService,private formBuilder: FormBuilder,private router:Router,private apiService:AuthService) { }
+  constructor( private encryption: EncryptionService,private toastrService: TmToastrService,private formBuilder: FormBuilder,private router:Router,private apiService:AuthService) { }
   private index: number = 0;
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group(
@@ -33,6 +34,12 @@ export class SignUpComponent implements OnInit {
     )
 
    
+  }
+  showToast(duration) {
+    this.toastrService.success(
+     
+      `Please Login`, 'Registered Succesfully',{duration}
+     );
   }
   showPassword = true;
 
@@ -53,8 +60,9 @@ export class SignUpComponent implements OnInit {
       return;
     }
     this.signUpForm.value.password=this.encryption.encryptUsingTripleDES(this.signUpForm.value.password, true);
+    this.showToast(3000);
     this.apiService.create(this.signUpForm.value).subscribe((res:any) => {
-     
+    
     }) 
     this.router.navigate(['auth/log-in']);
   }

@@ -122,4 +122,11 @@ itemInCart(item): boolean {
     console.log(errorMessage);
     return throwError(errorMessage);
  }
+ getPostCode(){
+  return this.http.get<any>('https://indianpincodeapi.onrender.com/pincode')
+  .pipe(
+    catchError(this.errorHandler)
+  )
+ }
+
 }

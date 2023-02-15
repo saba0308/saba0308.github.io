@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 userCount;
 // usersCount=this.usersData.length;
   ngOnInit(): void {
-   
+
     this.subscription = this.dataService.getMessage().subscribe(message => {
       this.lang = message
       console.log(this.lang);
@@ -65,6 +65,7 @@ userCount;
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
   }
+comparedDate= new Date( new Date().getDate()-1);
 
   chartOptions = {
     theme: "light2",
@@ -173,7 +174,13 @@ userCount;
       ]
     }]
   }
+  filteruser:userData[];
+  
+  filterData(data:Date){
+    this.filteruser=this.usersData.filter((p)=>p.lastSeen=data)
+  } 
   // Get sorting params
+  
   public gridSorting(params: any): void {
     console.log(params);
   }
