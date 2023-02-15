@@ -54,18 +54,11 @@ export class AddToCartComponent implements OnInit {
     this.checkoutForm = this.formBuilder.group({
      email: this.userdata.email,
      address:this.userdata.address,
-    //  orderCode:'',
+     orderCode:'',
      pincode:"",
      payment:"" ,
-    //  deliveryCharge: this.shipping,
-    //  total:this.items.reduce(
-    //   (sum, x) => ({
-    //     qtyTotal: 1,
-    //     productPrice: sum.productPrice + x.qtyTotal * x.productPrice
-    //   }),
-    //   { qtyTotal: 1, productPrice: 0 }
-    // ).productPrice,
-    // orderDate:new Date(),
+     deliveryCharge: this.shipping,
+     total:''
      });
     
  
@@ -78,14 +71,14 @@ export class AddToCartComponent implements OnInit {
       `Getting packed`, 'Your order has been submitted',{duration}
      );
   }
- getDeliverCharges(){
-  this.distance=this.getDistance('624003',this.checkoutForm.value.pincode); 
+ getDeliverCharges(data){
+  this.distance=this.getDistance('624003',data); 
     
   console.log(this.distance);
-  if((this.distance<=100) && (this.checkoutForm.value.total<=500)){
+  if((this.distance<=100) && (data<=500)){
     return this.shipping='free';
   }
-  else if((this.distance>100)&&(this.distance<300) && (this.checkoutForm.value.total<=500)){
+  else if((this.distance>100)&&(this.distance<300) && (data<=500)){
     return this.shipping='49 Ruppees'
   }
   else{
@@ -93,16 +86,17 @@ export class AddToCartComponent implements OnInit {
   }
  }
 
- 
+ totalValue;
 
   get total() {
-    return this.items.reduce(
+    return this.totalValue=this.items.reduce(
       (sum, x) => ({
         qtyTotal: 1,
         productPrice: sum.productPrice + x.qtyTotal * x.productPrice
       }),
       { qtyTotal: 1, productPrice: 0 }
     ).productPrice;
+
   }
   onSubmit(customerData) {
     // Process checkout data here
@@ -124,6 +118,7 @@ export class AddToCartComponent implements OnInit {
     {id:5,value:'Debit / Credit card'}
 
   ]
+  updateQty=JSON.parse(localStorage.getItem('cart_items'));
   changeSubtotal(item, index) {
     const qty = item.qtyTotal;
     const amt = item.productPrice;
@@ -133,6 +128,9 @@ export class AddToCartComponent implements OnInit {
       index
     ].nativeElement.innerHTML = subTotal_converted;
     this.cartService.saveCart();
+    // this.cartService.updateQty(item.id,this.updateQty).subscribe((res:any) => {
+  
+    // }) ; 
   }
 
   //----- remove specific item
@@ -151,15 +149,22 @@ export class AddToCartComponent implements OnInit {
   checkOut(){
     this.checkout=!this.checkout;
   }
-
+  selectedItem='';
+  orderData={};
   order(){
     this.submitted = true;
+    this.checkoutForm.value.total=this.totalValue;
     if (this.checkoutForm.invalid) {
       return;
-    }
-    this.apiService.postOrder(this.checkoutForm.value);
-   this.getDeliverCharges()
-    console.log(this.checkoutForm.value)
+    }  
+    
+    // localStorage.setItem('order',JSON.stringify(this.checkoutForm.value))
+    this.apiService.postOrder(this.checkoutForm.value).subscribe((res:any) => {
+  
+    }) ;
+   
+
+    // console.log(this.checkoutForm.value)
     this.items = this.cartService.clearCart(this.items);
     this.checkoutForm.reset();
     this.showToast(3000)

@@ -143,13 +143,13 @@
                         <tm-radio value="cosmic"   >{{'admin.layout.theme.cosmic' | translate}}</tm-radio>
                         <tm-radio value="corporate" >{{'admin.layout.theme.corporate' | translate}}</tm-radio>
                       </tm-radio-group> -->
-          <tm-checkbox status="basic" (checkedChange)="dark($event)">
+          <tm-checkbox status="basic"  [(ngModel)]="checkedDark"  [checked]="currentlyChecked === check_box_type.dark" (checkedChange)="dark($event)">
             {{'admin.layout.theme.dark' | translate}}
           </tm-checkbox>
-          <tm-checkbox status="basic" (checkedChange)="cosmic($event)">
+          <tm-checkbox status="basic"  [(ngModel)]="checkedCosmic"  [checked]="currentlyChecked === check_box_type.cosmic"(checkedChange)="cosmic($event)">
             {{'admin.layout.theme.cosmic' | translate}}
           </tm-checkbox>
-          <tm-checkbox status="basic" (checkedChange)="corporate($event)">
+          <tm-checkbox status="basic" [(ngModel)]="checkedCorporate"  [checked]="currentlyChecked === check_box_type.corporate" (checkedChange)="corporate($event)">
             {{'admin.layout.theme.corporate' | translate}}
           </tm-checkbox>
 

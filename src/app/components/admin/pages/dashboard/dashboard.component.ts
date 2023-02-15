@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   }
 userCount;
+ temp = new Date(new Date().getDate()-1);
 // usersCount=this.usersData.length;
   ngOnInit(): void {
 
@@ -53,12 +54,14 @@ userCount;
       { headerName: 'Last Seen', field: 'lastSeen', filter: true, sortable: true, width: 250 },
     ];
     this.getAllData();
+    // this.filterData('online')
     // this.sort(this.column);
   }
   getAllData() {
     this.apiService.getAll().subscribe((data: userData[]) => {
       console.log(data);
       this.usersData = data;
+      this.usersData=this.usersData.filter((p)=>p.status==='online')
     })
   }
   ngOnDestroy() {
@@ -176,8 +179,8 @@ comparedDate= new Date( new Date().getDate()-1);
   }
   filteruser:userData[];
   
-  filterData(data:Date){
-    this.filteruser=this.usersData.filter((p)=>p.lastSeen=data)
+  filterData(data){
+    this.filteruser=this.usersData.filter((p)=>p.status===data || data==='')
   } 
   // Get sorting params
   

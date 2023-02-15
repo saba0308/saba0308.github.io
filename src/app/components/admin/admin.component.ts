@@ -13,6 +13,8 @@ import { userData } from '../sign-in/userData';
 import { AuthService } from '../sign-in/services/auth.service';
 import { filter } from 'rxjs/operators';
 import { TmDialogService } from '@tmlib/ui-sdk/dialog';
+enum CheckBoxType { dark, cosmic,corporate, NONE };
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -25,6 +27,7 @@ export class AdminComponent implements OnInit,OnDestroy  {
     { title: 'Profile' },
     { title: 'Logout' ,link:"/auth/log-in"},
   ];
+  check_box_type = CheckBoxType;
   private destroy$: Subject<void> = new Subject<void>();
   currentTheme = 'default';
   themes = [
@@ -72,6 +75,7 @@ export class AdminComponent implements OnInit,OnDestroy  {
 
       });
     
+  this.currentTheme=localStorage.getItem('theme')
   }
     useLanguage(lang:string) {
       this.dataService.sendMessage(lang);
@@ -91,9 +95,12 @@ export class AdminComponent implements OnInit,OnDestroy  {
   userPictureOnly: boolean = false;
   ngOnInit() {
     this.currentUser = localStorage.getItem('adminValue');
+    
     this.changeTheme(this.currentTheme);
     this.themeService.changeTheme(this.currentTheme)
     this.currentTheme = this.themeService.currentTheme;
+   
+   this.themeStorage()
  
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
@@ -117,7 +124,49 @@ export class AdminComponent implements OnInit,OnDestroy  {
     this.destroy$.next();
     this.destroy$.complete();
   }
+  checkedDark=false;
+  checkedCosmic=false;
+  checkedCorporate=false;
+  currentlyChecked: CheckBoxType;
 
+  selectCheckBox(targetType: CheckBoxType) {
+    // If the checkbox was already checked, clear the currentlyChecked variable
+    if(this.currentlyChecked === targetType) {
+      this.currentlyChecked = CheckBoxType.NONE;
+      return;
+    }
+
+    this.currentlyChecked = targetType;
+  }
+themeStorage(){
+  if(this.currentTheme=='dark'){
+    this.checkedDark=true;
+    // this.checkedCosmic=false;
+    // this.checkedCorporate=false;
+   this.selectCheckBox(this.check_box_type.dark);
+
+  }
+else  if(this.currentTheme=='cosmic'){
+    // this.checkedDark=false;
+    this.checkedCosmic=true;
+    // this.checkedCorporate=false;
+    this.selectCheckBox(this.check_box_type.cosmic);
+  }
+ else if(this.currentTheme=='corporate'){
+    // this.checkedDark=false;
+    // this.checkedCosmic=false;
+    this.checkedCorporate=true;
+    this.selectCheckBox(this.check_box_type.corporate);
+  }
+  else {
+    this.checkedDark=false;
+    this.checkedCosmic=false;
+    this.checkedCorporate=false;
+    this.selectCheckBox(this.check_box_type.NONE)
+    localStorage.setItem('theme','default');
+  }
+ 
+}
   changeTheme(themeName:string) {
     this.themeService.changeTheme(themeName);
   }
@@ -169,10 +218,13 @@ dark(checked:boolean){
   if(checked)
   {
     var themeName="dark";
-    this.themeService.changeTheme(themeName)
+    localStorage.setItem('theme','dark');
+    this.themeService.changeTheme(themeName);
+    this.selectCheckBox(this.check_box_type.dark);
   }
   else{
     var themeName="default";
+    localStorage.setItem('theme','default');
     this.themeService.changeTheme(themeName)
   }
 }
@@ -180,10 +232,13 @@ cosmic(checked:boolean){
   if(checked)
   {
     var themeName="cosmic";
-    this.themeService.changeTheme(themeName)
+    localStorage.setItem('theme','cosmic');
+    this.themeService.changeTheme(themeName);
+    this.selectCheckBox(this.check_box_type.cosmic);
   }
   else{
     var themeName="default";
+     localStorage.setItem('theme','default');
     this.themeService.changeTheme(themeName)
   }
 }
@@ -191,11 +246,15 @@ corporate(checked:boolean){
   if(checked)
   {
     var themeName="corporate";
-    this.themeService.changeTheme(themeName)
+    localStorage.setItem('theme','corporate');
+    this.themeService.changeTheme(themeName);
+    this.selectCheckBox(this.check_box_type.corporate);
   }
   else{
     var themeName="default";
+  
     this.themeService.changeTheme(themeName)
+    this.selectCheckBox(this.check_box_type.NONE);
   }
 }
   logOut(){

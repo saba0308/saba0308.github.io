@@ -48,7 +48,7 @@ export class ProductService {
   }
   postOrder(data:any):Observable<any> 
   {
-   return this.http.post<any>(  'http://localhost:3000/order/', JSON.stringify(data), this.httpOptions)
+   return this.http.post<any>('http://localhost:3000/order', JSON.stringify(data), this.httpOptions)
    .pipe(
      catchError(this.errorHandler)
    )

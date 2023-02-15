@@ -56,10 +56,8 @@ export class CartService {
 //   }
 addToCart(addedItem) {
   this.items.push(addedItem);
-  // return this.http.post<any>(this.apiServer + '/cartProducts/', JSON.stringify(addedItem), this.httpOptions)
-  //   .pipe(
-  //      catchError(this.errorHandler)
-  //    )
+  this.saveCart();
+ 
   // this.cart(addedItem);
   // console.log(addedItem);
 
@@ -76,7 +74,13 @@ addToCart(addedItem) {
     existingItems = [addedItem]
   } */
 
-  this.saveCart();
+  
+}
+postCartItem(addedItem):Observable<any>{
+  return this.http.post<any>( 'http://localhost:3000/cartProducts/', JSON.stringify(addedItem), this.httpOptions)
+  .pipe(
+     catchError(this.errorHandler)
+   )
 }
 
 getItems() {
@@ -88,8 +92,15 @@ loadCart(): void {
 
 }
 
-saveCart(): void {
+saveCart():void {
   localStorage.setItem('cart_items', JSON.stringify(this.items)); 
+ 
+}
+updateQty(id,addedItem):Observable<any> {
+  return this.http.patch<any>( 'http://localhost:3000/cartProducts/' + id, JSON.stringify(addedItem), this.httpOptions)
+  .pipe(
+     catchError(this.errorHandler)
+   )
 }
 
 clearCart(items) {

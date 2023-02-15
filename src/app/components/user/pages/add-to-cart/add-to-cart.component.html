@@ -78,9 +78,13 @@
                         Pincode
                     </label>
 
-                    <input fullWidth tmInput placeholder="Pincode" type="text" 
-                        formControlName="pincode" />
-
+                    <!-- <input fullWidth tmInput placeholder="Pincode" type="text" 
+                        formControlName="pincode" /> -->
+ <tm-select placeholder="Pincode" fullWidth formControlName="pincode" [ngModel]="selectedItem"(ngModelChange)="getDeliverCharges($event)">
+    <tm-option value="624001">624001</tm-option>
+    <tm-option value="625002">625002</tm-option>
+    <tm-option value="632001">632001</tm-option>
+ </tm-select>
 
                 </div>
                 <div>
