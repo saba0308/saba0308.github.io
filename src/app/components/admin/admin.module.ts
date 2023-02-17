@@ -34,12 +34,13 @@ import { ProductsCreateComponent } from './pages/products-list/products-create/p
 import { ProductsEditComponent } from './pages/products-list/products-edit/products-edit.component';
 import { ProductsViewComponent } from './pages/products-list/products-view/products-view.component';
 import { TmIconsModule } from '@tmlib/ui-sdk/icons';
+import { OrderListComponent } from './pages/order-list/order-list.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 @NgModule({
   declarations: [
     AdminComponent,
     DashboardComponent,
-    CanvasJSChart, UserListComponent, DateAgoPipe, SortPipe, ProductsListComponent, ProductsCreateComponent, ProductsEditComponent, ProductsViewComponent
+    CanvasJSChart, UserListComponent, DateAgoPipe, SortPipe, ProductsListComponent, ProductsCreateComponent, ProductsEditComponent, ProductsViewComponent, OrderListComponent
   ],
   imports: [
     CommonModule, HttpClientModule,

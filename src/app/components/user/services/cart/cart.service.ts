@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { cartProduct, order } from 'src/app/components/model/product';
-import {  throwError,Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { cartProduct, order, productData } from 'src/app/components/model/product';
+import {  throwError,Observable, BehaviorSubject } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { cartData } from '../../pages/products/products.component';
 
 @Injectable({ providedIn: 'root' })
 
@@ -16,7 +17,8 @@ export class CartService {
   constructor(private http: HttpClient) { }
 
   items=[];
-  cartProduct:cartProduct[];
+  cartProduct:productData[];
+  public productList=new BehaviorSubject<productData[]>([])
   // Observable<cartProduct>
   cart(product):Observable<order>{
     
@@ -25,35 +27,7 @@ export class CartService {
        catchError(this.errorHandler)
      )
   }
-//     const productExistInCart = this.items.find(({name}) => name === product.name); // find product by name
-//     if (!productExistInCart) {
-//       this.items.push({...product, num:1}); // enhance "porduct" opject with "num" property
-//       return;
-//     }
-//     productExistInCart.num += 1;
-//   }
 
-//   getItems() {
-//     // return this.http.get<cartProduct[]>(this.apiServer + '/cartProducts/')
-//     // .pipe(
-//     //   catchError(this.errorHandler)
-//     // )
-//     return this.items;
-//   }
-//  deleteItem(id): Observable<cartProduct[]>{
-//   return this.http.delete<cartProduct[]>(this.apiServer + '/cartProducts/' + id,this.httpOptions)
-//  }
-//   clearCart() {
-//     this.items = [];
-//     return this.items;
-//   }
-//   removeProduct(product) {
-//     this.items = this.items.filter(({name}) => name !== product.productName)
-//    }
-
-//   getShippingPrices() {
-//     return this.http.get('/assets/shipping.json');
-//   }
 addToCart(addedItem) {
   this.items.push(addedItem);
   this.saveCart();
@@ -82,7 +56,31 @@ postCartItem(addedItem):Observable<any>{
      catchError(this.errorHandler)
    )
 }
+updatCartItem(id,addedItem):Observable<any>{
+  return this.http.post<any>( 'http://localhost:3000/cartProducts/'+id, JSON.stringify(addedItem), this.httpOptions)
+  .pipe(
+     catchError(this.errorHandler)
+   )
+}
+getAllCartItems(){
+  return this.http.get<productData[]>("http://localhost:3000/products/")
+  .pipe(map((res:productData[])=>{
+    return res;
+  }))
+}
+getCartItems(){
+  // return this.productList.asObservable();
 
+  // this.loadCart();
+  return this.items;
+  
+ }
+ setCartItems(product:productData[]){
+  //  this.productList.next(product)
+
+  this.items.push(product);
+  this.saveCart();
+ }
 getItems() {
   return this.items;
 } 
@@ -139,5 +137,22 @@ itemInCart(item): boolean {
     catchError(this.errorHandler)
   )
  }
-
+ getAllOrder(): Observable<any> {
+  return this.http.get<any>('http://localhost:3000/order/')
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+// getAllCart(): Observable<cartData> {
+//   return this.http.get<cartData>('http://localhost:3000/cartProducts/')
+//   .pipe(
+//     catchError(this.errorHandler)
+//   )
+// }
+putOrderStatus(id:any,productsData:any):Observable<any>{
+  return this.http.patch<any>( 'http://localhost:3000/order/' + id, JSON.stringify(productsData), this.httpOptions)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
 }

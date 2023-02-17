@@ -24,7 +24,7 @@ import { TmUserModule } from '@tmlib/ui-sdk/user';
 import { AdminModule } from './components/admin/admin.module';
 import { DateAgoPipe } from './components/pipes/date-ago.pipe';
 import { SortPipe } from './components/pipes/sort.pipe';
-import { APP_BASE_HREF } from '@angular/common';
+import { APP_BASE_HREF, CurrencyPipe } from '@angular/common';
 import {  EncryptPipe, DecryptPipe } from './components/pipes/encrypt-decrypt/encrypt-decrypt.pipe';
 import { config } from 'rxjs';
 import { TmIconsModule } from '@tmlib/ui-sdk/icons';
@@ -44,7 +44,7 @@ import { TmIconsModule } from '@tmlib/ui-sdk/icons';
     TmMenuModule,TmContextMenuModule,TmDialogModule.forRoot(),TmToastrModule.forRoot(),TmIconsModule
   
   ],
-  providers: [Title, EncryptPipe, DecryptPipe],
+  providers: [Title, EncryptPipe, DecryptPipe,CurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,7 +20,7 @@
 <div class="flexContainer">
 
 
-    <tm-card *ngFor="let product of filterProducts">
+    <tm-card *ngFor="let product of filterProducts;let i = index">
         <tm-card-body>
             <div class="imageContainer">
                 <img src="{{product.productImage}}" alt="">
@@ -43,7 +43,20 @@
         </tm-card-body>
         <tm-card-footer>
             <button tmButton (click)="addToCart(product)" status="primary">Buy Now </button>
+            <tm-form-field appearance="legacy" style="width: 70px;">
+                <label>Quantity</label>
+                <!-- <tm-select [(selected)]="selectedQty" [ngModelOptions]="{standalone: true}" (selectedChange)="dropDownValue($event.value,product.id)">
+                  <tm-option *ngFor="let value of quantitys" [value]="value.qty">
+                    {{ value.qty }}
+                  </tm-option>
+                </tm-select> -->
+                <input tmInput [(ngModel)]="product.quantity"
+                                [ngModelOptions]="{standalone: true}" min="1" type="number" value="{{ product.quantity }}"
+                                name="" class="form-control" />
+              </tm-form-field>
+           
         </tm-card-footer>
     </tm-card>
 
 </div>
+

@@ -1,16 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { Router,NavigationEnd,Event } from '@angular/router';
+import { Component, ElementRef, OnInit, QueryList, TemplateRef, ViewChildren } from '@angular/core';
+import { Router, NavigationEnd, Event } from '@angular/router';
 import { ProductService } from 'src/app/components/admin/services/products/product.service';
-import { productData } from 'src/app/components/model/product';
+import { cartProduct, productData } from 'src/app/components/model/product';
 import { filter } from 'rxjs/operators';
 import { CartService } from '../../services/cart/cart.service';
 import { HttpClient } from '@angular/common/http';
-import { TmToastrService } from '@tmlib/ui-sdk/toastr'; 
+import { TmToastrService } from '@tmlib/ui-sdk/toastr';
 import { TmComponentStatus } from '@tmlib/ui-sdk/helpers';
-export interface cartData{
-  email:string,
-  product:productData[]
+import { CurrencyPipe } from '@angular/common';
+import { TmDialogService } from '@tmlib/ui-sdk/dialog';
+export interface cartData {
+  email: string,
+  date: Date,
+  product: productData
+
 }
+export interface dropDownQuantity {
+  id: number;
+  quantity: number;
+}
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -18,77 +27,77 @@ export interface cartData{
 })
 
 export class ProductsComponent implements OnInit {
-message:string;
-  constructor(private apiService:ProductService,private toastrService: TmToastrService,private http: HttpClient,private router:Router,private cartService:CartService) { 
-   
+  message: string;
+  
+  constructor(private apiService: ProductService, private dialogService: TmDialogService, private currencyPipe: CurrencyPipe, private toastrService: TmToastrService, private http: HttpClient, private router: Router, private cartService: CartService) {
+    this.cartsData
   }
-  // products list
-  products:productData[]
-  filterProducts:productData[]
-  cartsData:cartData;
+
+  products: productData[] = []
+  filterProducts: productData[] = []
+  cartsData: cartData[] = [];
   ngOnInit(): void {
     this.getAllData();
-    this.userData=JSON.parse(localStorage.getItem('currentuser') || '{}');
+    this.userData = JSON.parse(localStorage.getItem('currentuser') || '{}');
     console.log(this.userData)
+    console.log(this.userData.email);
+  }
 
-  
-  }
+
   userData;
-   items = [];
+  items = [];
   getAllData() {
-    this.apiService.getAll().subscribe((data: productData[]) => {
-      console.log(data);
-      this.products = data;
-      this.filterProducts=data;
-    })
+    this.cartService.getAllCartItems()
+      .subscribe((res: any) => {
+        this.products = res;
+        this.filterProducts = res;
+        this.products.map((a: productData) => {
+          Object.assign(a, { total: a.productPrice })
+        });
+      })
   }
-  private index: number = 0;
+
 
   showToast(duration) {
-    this.toastrService.success( 'check in cart',`Product added succesfully`,{duration});
+    this.toastrService.success('check in cart', `Product added succesfully`, { duration });
   }
- 
+  selectedItem = '';
+
   addToCart(item) {
-    
+
     if (!this.cartService.itemInCart(item)) {
-      
-      item.qtyTotal=1;
-      
+
+      item.qtyTotal = 1;
+
       this.showToast(1000);
-      // this.http.post<any>('http://localhost:3000/cartProducts/', JSON.stringify(item)).subscribe(()=>{})
+
       this.cartService.addToCart(item)
-     
-    
-      
-      // this.cartService.postCartItem(this.cartsData).subscribe((res:any) => {
-  
-      // }) ; //add items in cart
+
+      console.log(item)
+
       this.items = [...this.cartService.getItems()];
-    
+
     }
-    else if(this.cartService.itemInCart(item)){
-      item.qtyTotal=item.qtyTotal+1;
-      console.log(item.qtyTotal)
-      this.cartService.addToCart(item.qtyTotal)
-    }
+
   }
-  selectedItem=" ";
-  filterData(data:string){
-    this.filterProducts=this.products.filter((p)=>p.productCategory===data || data==='')
-  } 
-  getClassOf(val:any) {
-    if (val ===0 ) {
+  selectedQty;
+  filterData(data: string) {
+    this.filterProducts = this.products.filter((p) => p.productCategory === data || data === '')
+  }
+  getClassOf(val: any) {
+    if (val === 0) {
       return 'offerNone';
-    }  else {
+    } else {
       return 'offerBatch';
     }
   }
-  getClassofQuantity(val:any,status:any){
-    if(val===0||status==='Out of stock'){
+  getClassofQuantity(val: any, status: any) {
+    if (val === 0 || status === 'Out of stock') {
       return 'outofStock';
     }
-    else{
+    else {
       return 'inStock'
     }
   }
+
 }

@@ -9,9 +9,12 @@ export interface productData{
     productQuantity:number;
     productStatus:string;
     productOffer:string;
+    quantity:number;
+    qtyTotal:number;
+    total:number;
 }
 export interface cartProduct{
-        id:number;
+        productnumber:number;
         productCode:string;
         productName:string;
         productPrice:number;
@@ -20,9 +23,10 @@ export interface cartProduct{
         productImage:any;
         productStatus:string;
         productOffer:string;
-        quantity:number; 
+        quantity:number;
         qtyTotal:number;
         subTotal:number;
+        total:number;
 }
 export interface orderHistory{
     email:string;

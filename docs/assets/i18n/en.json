@@ -20,7 +20,8 @@
         "layout.align":"RTL",
         "sidebar.nav.dashboard":"Dashboard",
         "sidebar.nav.users":"Users",
-        "sidebar.nav.products":"Products"
+        "sidebar.nav.products":"Products",
+        "sidebar.nav.order":"Order"
 	},
     "dashboard":{
           "card.title.booking":"Orders",

@@ -6,6 +6,8 @@ import { userData } from '../sign-in/userData';
 import { filter } from 'rxjs/operators';
 import { CartService } from './services/cart/cart.service';
 import { TmDialogService } from '@tmlib/ui-sdk/dialog';
+import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
+import { productData } from '../model/product';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -38,13 +40,16 @@ export class UserComponent implements OnInit {
   id: any;
   status = "online";
   offline = "offline";
- 
+ cartProduct:productData[]=[];
   ngOnInit(): void {
     this.userdata = JSON.parse(localStorage.getItem('currentuser') || '{}');
     this.id = this.userdata.id;
     // online Status
     this.statusData();
-    this.getCount()
+   this.cartProduct=this.cartService.getCartItems()
+    // .subscribe(res=>{
+    //   this.cartProduct=res;
+    // })
   }
   toggle() {
     this.sidebarService.toggle(false, 'left');
@@ -81,5 +86,11 @@ getCount(){
 }
 open(dialog: TemplateRef<any>) {
   this.dialogService.open(dialog, { context: ' Do You Want Logout?' });
+}
+openWithBackdrop() {
+  this.openCart(true);
+}
+openCart(hasBackdrop: boolean){
+  this.dialogService.open(AddToCartComponent, { hasBackdrop });
 }
 }
