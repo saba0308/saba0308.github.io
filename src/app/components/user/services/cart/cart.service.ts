@@ -51,19 +51,19 @@ addToCart(addedItem) {
   
 }
 postCartItem(addedItem):Observable<any>{
-  return this.http.post<any>( 'http://localhost:3000/cartProducts/', JSON.stringify(addedItem), this.httpOptions)
+  return this.http.post<any>( 'https://template-json-server.vercel.app/api/cartProducts/', JSON.stringify(addedItem), this.httpOptions)
   .pipe(
      catchError(this.errorHandler)
    )
 }
 updatCartItem(id,addedItem):Observable<any>{
-  return this.http.post<any>( 'http://localhost:3000/cartProducts/'+id, JSON.stringify(addedItem), this.httpOptions)
+  return this.http.post<any>( 'https://template-json-server.vercel.app/api/cartProducts/'+id, JSON.stringify(addedItem), this.httpOptions)
   .pipe(
      catchError(this.errorHandler)
    )
 }
 getAllCartItems(){
-  return this.http.get<productData[]>("http://localhost:3000/products/")
+  return this.http.get<productData[]>("https://template-json-server.vercel.app/api/products/")
   .pipe(map((res:productData[])=>{
     return res;
   }))
@@ -95,7 +95,7 @@ saveCart():void {
  
 }
 updateQty(id,addedItem):Observable<any> {
-  return this.http.patch<any>( 'http://localhost:3000/cartProducts/' + id, JSON.stringify(addedItem), this.httpOptions)
+  return this.http.patch<any>( 'https://template-json-server.vercel.app/api/cartProducts/' + id, JSON.stringify(addedItem), this.httpOptions)
   .pipe(
      catchError(this.errorHandler)
    )
@@ -138,7 +138,7 @@ itemInCart(item): boolean {
   )
  }
  getAllOrder(): Observable<any> {
-  return this.http.get<any>('http://localhost:3000/order/')
+  return this.http.get<any>('https://template-json-server.vercel.app/api/order/')
   .pipe(
     catchError(this.errorHandler)
   )
@@ -150,7 +150,7 @@ itemInCart(item): boolean {
 //   )
 // }
 putOrderStatus(id:any,productsData:any):Observable<any>{
-  return this.http.patch<any>( 'http://localhost:3000/order/' + id, JSON.stringify(productsData), this.httpOptions)
+  return this.http.patch<any>( 'https://template-json-server.vercel.app/api/order/' + id, JSON.stringify(productsData), this.httpOptions)
   .pipe(
     catchError(this.errorHandler)
   )
