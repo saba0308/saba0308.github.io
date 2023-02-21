@@ -45,4 +45,13 @@ getData(){
   // });
   
 }
+orderdeatils=false;
+orderFilter;
+orderDetails(item){
+this.orderdeatils=true;
+this.orderFilter=this.orderData.filter((p)=>p.id===item.id );
+}
+back(){
+  this.orderdeatils=false;
+}
 }

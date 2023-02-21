@@ -1,5 +1,7 @@
 <tm-card *ngIf="!checkout">
     <tm-card-body>
+        <button class="dismissButton" status="danger" tmButton (click)=" dialogCloseBtn()"> x
+             </button>
         <div class="container" *ngIf="cartProduct.length!=0">
             <table>
                 <thead>

@@ -1,8 +1,14 @@
-<div class="noProducts" *ngIf="orderData.length===0">
+
+<tm-card  *ngIf="orderData.length===0 ">
+    <tm-card-body>
+        <div class="noProducts">
             <img src="../../../../../assets/emptycart.svg "alt="" width="200px">
             <h4> You Have No Order</h4>
         </div>
-<div class="orderContainer" *ngIf="orderData.length!=0">
+    </tm-card-body>
+</tm-card>
+
+<div class="orderContainer" *ngIf="orderData.length!=0 && !orderdeatils">
     <!-- <table>
                 <thead>
                     <tr>
@@ -50,8 +56,97 @@
                 </div>
             </tm-card-body>
             <tm-card-footer>
-                     <a href="">View Details</a>
+                <button tmButton shape="semi-round" status="primary" (click)="orderDetails(orderData)">
+                    View Details
+                </button>
+                  
             </tm-card-footer>
         </tm-card>
+    </div>
+</div>
+<div class="filterContainer" *ngIf="orderdeatils">
+    <div class="orderHistory">
+        <tm-card>
+            <tm-card-body>
+      
+        <div  *ngFor="let orderData of orderFilter">
+            
+            <div class="dateContainer">
+                <button tmButton shape="semi-round" (click)="back()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.25 12.2739L19.25 12.2739" stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10.2998 18.2985L4.2498 12.2745L10.2998 6.24951" stroke="#31384F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    back</button>
+                <span> {{orderData.date|date}}</span>
+            </div>
+          
+            <div class="container" >
+                    
+              
+                  <table>
+                    <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                    <tr *ngFor="let productData of orderData.product;"> 
+                        <td style="display: flex;flex-direction: column;">
+                            <img width="100px" src="{{productData.productImage}}" alt="">
+                            <span>{{productData.productName}}</span>
+                        </td>
+                        <td>
+                            <span>{{productData.productDescription}}</span>
+                        </td>
+                        <td>
+                            <span>{{productData.quantity}}</span>
+                        </td>
+                        <td>
+                           
+
+                            <span>{{productData.quantity * productData.productPrice |currency}}</span>
+                        </td>
+                    </tr>
+                  </table>
+                    <!-- <div class="productDetails" >
+                      
+                    </div>
+                     <div class="productDetails">
+                        <span>{{productData.productDescription}}</span>
+                     </div>
+                     <div class="productDetails">
+                        <span>{{productData.quantity}}</span>
+                        <span>{{productData.quantity * productData.productPrice}}</span>
+                     </div> -->
+                
+     </div>
+    
+     <div class="totalValue">
+<h5></h5>
+        <h4>Total: {{orderData.totalvalue|currency}}</h4>
+    </div>
+    <div  class="addressValue">
+        <table>
+            <tr>
+                <td>
+                    <span>Address: </span>
+                    <p> {{orderData.address}},{{orderData.pincode}}</p>
+                </td>
+                <td>
+                    <span>Payment:</span>
+                    <p>{{orderData.payment}}</p>
+                    <span>Status:</span>
+                    <p>{{orderData.status}}</p>
+                </td>
+            </tr>
+        </table>
+      
+      
+     </div>
+        </div>
+    </tm-card-body>
+</tm-card>
     </div>
 </div>

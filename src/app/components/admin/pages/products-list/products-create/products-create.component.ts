@@ -24,7 +24,7 @@ export class ProductsCreateComponent implements OnInit {
         productImage:["",Validators.required],
         productOffer:[""],
         productStatus:[""],
-        productQuantity:[""]
+        productCount:[""]
       }
     )
 
@@ -56,7 +56,7 @@ export class ProductsCreateComponent implements OnInit {
  public fields: Object = { text: 'Game', value: 'Id' };
 
   onChange(args: any): void {
-    if(this.productForm.value.productQuantity==0){
+    if(this.productForm.value.productCount==0){
           this.productForm.value.productStatus=='Out of Stock'
     }
 }

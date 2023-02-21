@@ -6,7 +6,7 @@ export interface productData{
     productCategory:string;
     productDescription:string;
     productImage:any;
-    productQuantity:number;
+    productCount:number;
     productStatus:string;
     productOffer:string;
     quantity:number;

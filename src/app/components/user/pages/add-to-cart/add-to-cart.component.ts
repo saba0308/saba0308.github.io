@@ -115,7 +115,6 @@ export class AddToCartComponent implements OnInit {
     { id: 3, value: 'NEFT' },
     { id: 4, value: 'Pay with UPI' },
     { id: 5, value: 'Debit / Credit card' }
-
   ]
   updateQty = JSON.parse(localStorage.getItem('cart_items'));
   changeSubtotal(item, index) {
@@ -166,10 +165,12 @@ export class AddToCartComponent implements OnInit {
     this.cartService.postCartItem({ date: new Date(), email: this.userdata.email, product: this.cartService.getCartItems() }).subscribe((res: any) => {
 
     });
+   
 
     // console.log(this.checkoutForm.value)
     this.cartProduct = [];
     this.cartService.clearCart(this.cartProduct);
+   
     this.cartService.productList.next(this.cartProduct);
     this.checkoutForm.reset();
 

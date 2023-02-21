@@ -28,7 +28,7 @@ id:any;
         productImage:[this.productsData.productImage],
         productOffer:[this.productsData.productOffer],
         productStatus:[this.productsData.productStatus],
-        productQuantity:[this.productsData.productQuantity]
+        productCount:[this.productsData.productCount]
       }
     )
 

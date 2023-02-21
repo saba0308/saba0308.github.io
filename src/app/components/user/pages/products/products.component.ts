@@ -72,7 +72,9 @@ export class ProductsComponent implements OnInit {
       this.showToast(1000);
 
       this.cartService.addToCart(item)
-
+      this.apiService.update(item.id,item).subscribe((res)=>{
+        
+      })
       console.log(item)
 
       this.items = [...this.cartService.getItems()];
@@ -80,6 +82,7 @@ export class ProductsComponent implements OnInit {
     }
 
   }
+ 
   selectedQty;
   filterData(data: string) {
     this.filterProducts = this.products.filter((p) => p.productCategory === data || data === '')
@@ -99,5 +102,21 @@ export class ProductsComponent implements OnInit {
       return 'inStock'
     }
   }
-
+disabled=false;
+isDisabled=false;
+  increment(item) {
+   item.quantity++;
+  const qty=item.productCount--;
+  if(item.productCount===0){
+    item.productStatus='Out of stock'
+  }
+  
+   console.log(item.productCount)
+  
+  }
+  decrement(item) {
+    item.quantity--;
+    const qty=item.productCount++;
+  }
+  
 }

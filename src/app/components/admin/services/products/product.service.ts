@@ -9,7 +9,7 @@ import { productData } from 'src/app/components/model/product';
 export class ProductService {
   // http://localhost:3000
   // https://template-json-server.vercel.app/api
-  private apiServer = "https://template-json-server.vercel.app/api";
+  private apiServer = "http://localhost:3000";
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -29,8 +29,8 @@ export class ProductService {
       catchError(this.errorHandler)
     )
   }
-  find(id:any): Observable<productData[]> {
-    return this.httpClient.get<productData[]>(this.apiServer + '/products/' + id)
+  find(id:any): Observable<productData> {
+    return this.httpClient.get<productData>(this.apiServer + '/products/' + id)
     .pipe(
       catchError(this.errorHandler)
     )
@@ -41,9 +41,9 @@ export class ProductService {
       catchError(this.errorHandler)
     )
   }
-  delete(pid:any):Observable<productData>{
+  delete(id:any):Observable<productData>{
    
-    return this.httpClient.delete<productData>(this.apiServer + '/products/' + pid,this.httpOptions)
+    return this.httpClient.delete<productData>(this.apiServer + '/products/' + id,this.httpOptions)
    
   }
   postOrder(data:any):Observable<any> 
