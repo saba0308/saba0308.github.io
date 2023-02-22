@@ -77,10 +77,12 @@ export class LogInComponent implements OnInit {
     this._http.get<userData[]>("https://template-json-server.vercel.app/api/usersData")
       .subscribe(res => {
         const user = res.find((a: userData) => {
-          return a.email === this.signInForm.value.email && a.password === this.signInForm.value.password
+          return a.email === this.signInForm.value.email && a.password === this.signInForm.value.password 
         });
 
-        
+        // const admin = res.find((a: userData) => {
+        //   return a.email === this.signInForm.value.email && a.password === this.signInForm.value.password && a.role='admin'
+        // });
         if (user) {
        
    

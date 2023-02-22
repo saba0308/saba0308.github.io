@@ -35,7 +35,7 @@ export class AuthGuard implements CanActivate {
     
     public isAdminLoggedIn(): boolean {      
       let status = false;      
-      if (localStorage.getItem('isAdminLoggedIn') == "true") {      
+      if (localStorage.getItem('isAdminLoggedIn') =="true") {      
          status = true;  
           
       }

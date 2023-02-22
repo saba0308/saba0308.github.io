@@ -28,6 +28,7 @@ import { APP_BASE_HREF, CurrencyPipe } from '@angular/common';
 import {  EncryptPipe, DecryptPipe } from './components/pipes/encrypt-decrypt/encrypt-decrypt.pipe';
 import { config } from 'rxjs';
 import { TmIconsModule } from '@tmlib/ui-sdk/icons';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { TmIconsModule } from '@tmlib/ui-sdk/icons';
     TmMenuModule,TmContextMenuModule,TmDialogModule.forRoot(),TmToastrModule.forRoot(),TmIconsModule
   
   ],
-  providers: [Title, EncryptPipe, DecryptPipe,CurrencyPipe],
+  providers: [Title,AuthGuard,EncryptPipe, DecryptPipe,CurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

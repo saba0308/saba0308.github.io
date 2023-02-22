@@ -36,10 +36,11 @@ export class SignInComponent implements OnInit {
           this.message = "Sign In"
 
         }
-        else {
+        else{
           this.message = "Password Recovery"
-
         }
+    
+
 
       });
   }

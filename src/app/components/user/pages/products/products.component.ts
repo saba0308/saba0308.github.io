@@ -9,6 +9,8 @@ import { TmToastrService } from '@tmlib/ui-sdk/toastr';
 import { TmComponentStatus } from '@tmlib/ui-sdk/helpers';
 import { CurrencyPipe } from '@angular/common';
 import { TmDialogService } from '@tmlib/ui-sdk/dialog';
+import { UserInterfaceService } from 'src/app/components/admin/services/user-interface.service';
+import { Carousel } from 'src/app/components/admin/pages/user-interface/carousel/carousel.component';
 export interface cartData {
   email: string,
   date: Date,
@@ -29,7 +31,7 @@ export interface dropDownQuantity {
 export class ProductsComponent implements OnInit {
   message: string;
   
-  constructor(private apiService: ProductService, private dialogService: TmDialogService, private currencyPipe: CurrencyPipe, private toastrService: TmToastrService, private http: HttpClient, private router: Router, private cartService: CartService) {
+  constructor(private apiService: ProductService,private interfaceService:UserInterfaceService,  private dialogService: TmDialogService, private currencyPipe: CurrencyPipe, private toastrService: TmToastrService, private http: HttpClient, private router: Router, private cartService: CartService) {
     this.cartsData
   }
 
@@ -38,6 +40,10 @@ export class ProductsComponent implements OnInit {
   cartsData: cartData[] = [];
   ngOnInit(): void {
     this.getAllData();
+    // this.interfaceService.getAllCarousel().subscribe((data:any) => {
+    //   this.carouselData = data;
+    //  console.log(this.carouselData)   
+    // })
     this.userData = JSON.parse(localStorage.getItem('currentuser') || '{}');
     console.log(this.userData)
     console.log(this.userData.email);
@@ -45,6 +51,7 @@ export class ProductsComponent implements OnInit {
 
 
   userData;
+  carouselData:Carousel[]=[];
   items = [];
   getAllData() {
     this.cartService.getAllCartItems()
@@ -55,6 +62,8 @@ export class ProductsComponent implements OnInit {
           Object.assign(a, { total: a.productPrice })
         });
       })
+   
+     
   }
 
 
@@ -117,6 +126,9 @@ isDisabled=false;
   decrement(item) {
     item.quantity--;
     const qty=item.productCount++;
+    if(item.productCount!=0){
+      item.productStatus='In stock'
+    }
   }
   
 }

@@ -1,0 +1,46 @@
+
+<div   class="container">
+    <p>carosel image </p> <button tmButton (click)="create()"> +</button>
+    <p >hi </p>
+
+    <p> test: {{testData}}</p>
+
+    <div *ngFor="let carousel of testData ">
+      <img [src]="carousel.carouselImage" alt="Carousel Image">
+      <p>{{carousel.id}}</p>
+      <p>car</p>
+    </div>
+  
+
+    <!-- <div   *ngFor="let carousel of carouselData">
+          <p>carosel No:{{carousel.id}}</p>
+            <img src="{{carousel.carouselImage}}" alt="errors"> 
+      
+       <div class="buttonGroup">
+        <button tmButton> delete</button>
+       </div> -->
+           
+        
+<!--         
+    </div> -->
+   
+    
+    
+</div>
+<!-- <ng-container *ngIf="carouselData$ | async as carouselData">
+  <div class="carousel-inner">
+    <div *ngFor="let item of carouselData" class="carousel-item">
+      <img [src]="item.carouselImage" alt="">
+    </div>
+  </div>
+</ng-container> -->
+
+<!-- <ng-container *ngIf="(carouselData$ | async) as carouselData">
+  <div *ngFor="let item of carouselData">
+    <img src="{{ item.carouselImage }}" alt="{{ item.id }}">
+  </div>
+</ng-container> -->
+
+
+
+

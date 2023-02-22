@@ -56,6 +56,12 @@ postCartItem(addedItem):Observable<any>{
      catchError(this.errorHandler)
    )
 }
+postProfileDashboardData(addedItem):Observable<any>{
+  return this.http.post<any>( 'http://localhost:3000/comments/', JSON.stringify(addedItem), this.httpOptions)
+  .pipe(
+     catchError(this.errorHandler)
+   )
+}
 updatCartItem(id,addedItem):Observable<any>{
   return this.http.post<any>( 'http://localhost:3000/cartProducts/'+id, JSON.stringify(addedItem), this.httpOptions)
   .pipe(

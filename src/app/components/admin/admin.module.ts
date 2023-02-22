@@ -35,12 +35,16 @@ import { ProductsEditComponent } from './pages/products-list/products-edit/produ
 import { ProductsViewComponent } from './pages/products-list/products-view/products-view.component';
 import { TmIconsModule } from '@tmlib/ui-sdk/icons';
 import { OrderListComponent } from './pages/order-list/order-list.component';
+import { UserInterfaceComponent } from './pages/user-interface/user-interface.component';
+import { TmTabsetModule } from '@tmlib/ui-sdk/tabset';
+import { CarouselComponent } from './pages/user-interface/carousel/carousel.component';
+import { CarouselCreateComponent } from './pages/user-interface/carousel/carousel-create/carousel-create.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 @NgModule({
   declarations: [
     AdminComponent,
     DashboardComponent,
-    CanvasJSChart, UserListComponent, DateAgoPipe, SortPipe, ProductsListComponent, ProductsCreateComponent, ProductsEditComponent, ProductsViewComponent, OrderListComponent
+    CanvasJSChart, UserListComponent, DateAgoPipe, SortPipe, ProductsListComponent, ProductsCreateComponent, ProductsEditComponent, ProductsViewComponent, OrderListComponent, UserInterfaceComponent, CarouselComponent, CarouselCreateComponent
   ],
   imports: [
     CommonModule, HttpClientModule,
@@ -52,7 +56,7 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
       }
     }),
     AdminRoutingModule, FormsModule, ReactiveFormsModule,
-    TmLayoutModule, TmCardModule, TmSidebarModule.forRoot(),
+    TmLayoutModule, TmCardModule, TmSidebarModule.forRoot(), TmTabsetModule,
     TmButtonModule, TmMenuModule, TmContextMenuModule, TmUserModule, TmCheckboxModule, TmCardModule,
     TmPopoverModule, TmSelectModule, TmRadioModule,TmIconsModule, TmGridModule,TmFormFieldModule,TmInputModule
   ]

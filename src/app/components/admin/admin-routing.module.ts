@@ -8,12 +8,32 @@ import { ProductsCreateComponent } from './pages/products-list/products-create/p
 import { ProductsEditComponent } from './pages/products-list/products-edit/products-edit.component';
 import { ProductsListComponent } from './pages/products-list/products-list.component';
 import { ProductsViewComponent } from './pages/products-list/products-view/products-view.component';
+import { CarouselCreateComponent } from './pages/user-interface/carousel/carousel-create/carousel-create.component';
+import { CarouselComponent } from './pages/user-interface/carousel/carousel.component';
+import { UserInterfaceComponent } from './pages/user-interface/user-interface.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent,data: {
     title: 'Admin'
   } },
+  {
+    path:'user-interface',component:UserInterfaceComponent,data:{
+      title:'Admin'
+    },children:[
+      {path:'carousel-view',component:CarouselComponent,data:{
+        title:'Admin'
+      }},
+      {path:'carousel-create',component:CarouselCreateComponent,data:{
+        title:'Admin'
+      }},
+      {path:'**',component:CarouselComponent,data:{
+        title:'Admin'
+      }},
+  
+  
+  ]
+  },
   { path: 'user-list', component: UserListComponent,data: {
     title: 'Admin'
   } },

@@ -4,6 +4,7 @@ import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+
 import { UserComponent } from './user.component';
 
 const routes: Routes = [

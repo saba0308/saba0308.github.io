@@ -18,18 +18,18 @@ const routes: Routes = [
   {
     path: 'admin', component: AdminComponent,
     loadChildren: () => import('./components/admin/admin.module')
-      .then(m => m.AdminModule),
+      .then(m => m.AdminModule),canActivate: [AuthGuard],
     data: {
       title: 'admin'
-    }, canActivate: [AuthGuard]
+    }, 
   },
   {
     path: 'user', component: UserComponent,
     loadChildren: () => import('./components/user/user.module')
-      .then(m => m.UserModule),
+      .then(m => m.UserModule), canActivate: [AuthGuard],
     data: {
       title: 'user'
-    }, canActivate: [AuthGuard]
+    },
   },
   {
     path: '',

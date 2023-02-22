@@ -19,7 +19,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { TmBadgeModule } from '@tmlib/ui-sdk/badge';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import{TmAutocompleteModule} from '@tmlib/ui-sdk/autocomplete'
 @NgModule({
@@ -29,7 +29,6 @@ import{TmAutocompleteModule} from '@tmlib/ui-sdk/autocomplete'
     ProductsComponent,
     OrdersComponent,
     AddToCartComponent,
-    ProductDetailsComponent
   ],
   imports: [
     CommonModule,HttpClientModule,
