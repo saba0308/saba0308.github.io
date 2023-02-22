@@ -5,6 +5,7 @@ import { DataService } from '../../services/data.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/components/sign-in/services/auth.service';
 import { userData } from 'src/app/components/sign-in/userData';
+import { CartService } from 'src/app/components/user/services/cart/cart.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,11 +25,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public actionButtonData: any = [];
   public tmPageButtonData: any = [];
   subscription!: Subscription;
-  constructor(private translate: TranslateService, private apiService: AuthService, private dataService: DataService) {
+  constructor(private cartService:CartService,private translate: TranslateService, private apiService: AuthService, private dataService: DataService) {
     translate.setDefaultLang('en');
 
   }
 userCount;
+orderCount;
  temp = new Date(new Date().getDate()-1);
 // usersCount=this.usersData.length;
   ngOnInit(): void {
@@ -57,11 +59,20 @@ userCount;
     // this.filterData('online')
     // this.sort(this.column);
   }
+  totalRevenue;
   getAllData() {
     this.apiService.getAll().subscribe((data: userData[]) => {
       console.log(data);
+      this.userCount=data.length;
       this.usersData = data;
       this.usersData=this.usersData.filter((p)=>p.status==='online')
+    })
+    this.cartService.getAllOrder().subscribe((data:any) => {
+      this.orderCount=data.length;
+    
+      // console.log(this.orderData.length)
+     this.totalRevenue=data.map((a)=>(a.totalvalue)).reduce((a, b) => a + b, 0)
+    console.log(this.totalRevenue)
     })
   }
   ngOnDestroy() {

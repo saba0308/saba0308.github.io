@@ -54,12 +54,13 @@
                     <h4>Total: {{orderData.totalvalue|currency}}</h4>
                     <h5>{{orderData.status}}</h5>
                 </div>
+                <div class="cancelContainer" *ngIf="orderData.status!='Delivered'"><button tmButton status="danger" (click)="cancel(orderData.id)" >cancel</button></div>
             </tm-card-body>
             <tm-card-footer>
                 <button tmButton shape="semi-round" status="primary" (click)="orderDetails(orderData)">
                     View Details
                 </button>
-                  
+                
             </tm-card-footer>
         </tm-card>
     </div>

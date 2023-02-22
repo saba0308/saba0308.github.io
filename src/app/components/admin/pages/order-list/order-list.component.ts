@@ -15,9 +15,9 @@ orderData;
 status;
   ngOnInit(): void {
     this.cartService.getAllOrder().subscribe((data) => {
-      this.orderData=data;
-      console.log(this.orderData.length)
-
+      this.orderData=data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      console.log(data.map((a)=>(a.totalvalue)))
+    
     })
     this.statusForm = this.formBuilder.group(
       {

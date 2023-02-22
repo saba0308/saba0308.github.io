@@ -163,7 +163,7 @@ export class AddToCartComponent implements OnInit {
     });
   
     this.cartService.postCartItem({ date: new Date(), email: this.userdata.email, product: this.cartService.getCartItems() }).subscribe((res: any) => {
-
+    
     });
    
 

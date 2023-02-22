@@ -88,7 +88,7 @@
                 </tm-select> -->
                     <button  [disabled]="product.quantity===0 " tmPrefix status="primary" (click)="decrement(product)" tmButton>-</button>
                     <input style="text-align:center;" tmInput [(ngModel)]="product.quantity" [ngModelOptions]="{standalone: true}" min="1"
-                        type="number" value="{{ product.quantity}}" name="" class="form-control" />
+                        type="number" value="{{product.quantity}}" name="" class="form-control" />
                     <button  [disabled]="product.productCount===0" tmSuffix status="primary" tmButton (click)="increment(product)">+</button>
                 </tm-form-field>
             </div>

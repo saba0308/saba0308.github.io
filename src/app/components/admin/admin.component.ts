@@ -260,7 +260,8 @@ corporate(checked:boolean){
   logOut(){
     localStorage.setItem('isAdminLoggedIn','false');    
     localStorage.removeItem('adminValue');
-    this.router.navigate(['/auth/log-in'])
+    this.router.navigate(['/auth/log-in']);
+    localStorage.clear();
   }
   open(dialog: TemplateRef<any>) {
     this.dialogService.open(dialog, { context: ' Do You Want Logout?' });

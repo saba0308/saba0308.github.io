@@ -21,7 +21,8 @@
         "sidebar.nav.dashboard":"Dashboard",
         "sidebar.nav.users":"Users",
         "sidebar.nav.products":"Products",
-        "sidebar.nav.order":"Order"
+        "sidebar.nav.order":"Order",
+        "sidebar.nav.userInterface":"User Interface"
 	},
     "dashboard":{
           "card.title.booking":"Orders",

@@ -62,6 +62,7 @@
           <input type="file" accept=".png, .jpg, .jpeg" formControlName="productImage" tmInput shape="semi-round"
             (change)="onSelectFile($event)" fullWidth [ngClass]="{ 'is-invalid': submitted && f.productImage.errors }">
           <div *ngIf="submitted && f.productImage.errors" class="invalid-feedback">
+            <img src="" alt="">
             <div *ngIf="f.productImage.errors?.required">Image is required and supported format is .jpg,.jpeg,.png</div>
           </div>
         </tm-form-field>

@@ -79,9 +79,11 @@ export class ProductsComponent implements OnInit {
       item.qtyTotal = 1;
 
       this.showToast(1000);
-
+          
       this.cartService.addToCart(item)
-      this.apiService.update(item.id,item).subscribe((res)=>{
+      const data=item
+   
+      this.apiService.update(data.id,data).subscribe((res)=>{
         
       })
       console.log(item)

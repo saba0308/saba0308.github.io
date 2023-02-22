@@ -157,6 +157,12 @@ getByIdOrder(id:any): Observable<any> {
     catchError(this.errorHandler)
   )
 }
+
+deleteOrder(id:any):Observable<any>{
+   
+  return this.http.delete<any>( 'http://localhost:3000/order/' + id,this.httpOptions)
+ 
+}
 // getAllCart(): Observable<cartData> {
 //   return this.http.get<cartData>('http://localhost:3000/cartProducts/')
 //   .pipe(
