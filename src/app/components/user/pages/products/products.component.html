@@ -24,7 +24,7 @@
       </div>
 </div> -->
        
-<ngb-carousel >
+<!-- <ngb-carousel >
   <ng-template ngbSlide *ngFor="let carousel of carouselData">
     <div class="wrapper">
       <img class="d-block w-100" [src]="carousel.carouselImage" alt="Random first slide">
@@ -34,7 +34,7 @@
     </div>
   </ng-template>
  
-</ngb-carousel>
+</ngb-carousel> -->
 <tm-card>
     <tm-card-body>
         <div class="container">
@@ -67,7 +67,7 @@
             </div>
             <div class="detailsContainer">
                 <div> <span>Name:</span>{{product.productName}}</div>
-                <div> <span>Price:</span>{{product.productPrice}}</div>
+                <div> <span>Price:</span>{{product.productPrice | currency}}</div>
                 <div> <span>Description:</span>{{product.productDescription}}</div>
                 <div><span>Status:</span> <span
                         [ngStyle]="{'color':(product.productStatus==='Out of stock')?'red':'green'}">{{product.productStatus}}

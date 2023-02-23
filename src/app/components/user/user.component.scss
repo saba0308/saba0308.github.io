@@ -2,35 +2,84 @@ tm-layout {
 
   tm-layout-header {
     background: #2c8cf4;
-
-    .toggleButton {
-      display: block;
-    }
-
-    .header {
-      width: 100%;
+    height: 120px;
+    .flexContainer {
       display: flex;
-      justify-content: space-between;
-      div{
-        svg{
-          width: 40px;
-          height:40px;
-          path{
-            fill:var(--text-basic-color)
+      flex-direction: column;
+      
+      width: 100%;
+
+      .containerFirst {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+        top:10px;
+
+        .toggleButton {
+          display: flex;
+          height: 40px;
+         
+        }
+
+        .header {
+
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+
+          div {
+            svg {
+              width: 40px;
+              height: 40px;
+
+              path {
+                fill: var(--text-basic-color)
+              }
+            }
+          }
+
+          .dropdownConatiner {
+            a {
+              text-decoration: none;
+              padding: 20px 0px 0px 40px;
+            }
           }
         }
       }
+
+      .containerSecond {
+        width: 100%;
+        position: relative;
+        top:40px;
+        display: flex;
+        gap:50px;
+        a{
+          text-decoration: none;
+          color: white;
+          font-weight: 600;
+        }
+        input{
+          height:30px;
+          width:300px;
+        }
+      }
     }
-    .subHeader{
+
+    .subHeader {
       width: 100%;
       display: flex;
+      flex-direction: row;
       justify-content: space-between;
-      div{
-        svg{
+
+      div {
+        svg {
           width: 40px;
-          height:40px;
-          path{
-            fill:var(--text-basic-color)
+          height: 40px;
+
+          path {
+            fill: var(--text-basic-color)
           }
         }
       }
@@ -40,103 +89,79 @@ tm-layout {
       color: white;
       font-family: 'poppins';
     }
-      
-    tm-sidebar {
+
     
-
-      .stop-watch {
-        font-family: 'Source Code Pro', monospace;
-        text-align: center;
-        font-size: 3em;
-        padding: 30px;
-      }
-
-      .control {
-        width: 300px;
-        padding: 5px;
-        margin-top: 15px;
-        font-size: 36px;
-        font-weight: bold;
-        border: 2px solid #f44336;
-        border-radius: 4px;
-        cursor: pointer;
-        outline: none;
-      }
-
-      .control:hover {
-        background: #f44336;
-        color: aliceblue;
-      }
-
-    }
   }
+  tm-sidebar {
 
- 
-  .sidebar {
-
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: space-between;
-    .header {
-      display: none;
-    
-    }
-
-    button {
-      display: none;
-    }
-
-    ul {
-      display: flex;
-      flex-flow: column;
-      padding: 0%;
-      position: relative;
-      left: -15px;
-
-      li {
-        list-style: none;
-        padding: 20px;
-        width: 100%;
-
-        a {
-          display: flex;
-          flex-flow: row nowrap;
-          text-decoration: none;
-          color: var(--text-basic-color);
+    .sidebar {
+      padding-top: 40px;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: space-between;
+      .header {
+        display: none;
+        
+      }
+  
+      button {
+        display: none;
+      }
+  
+      ul {
+        display: flex;
+        flex-flow: column;
+        padding: 0%;
+        position: relative;
+        left: -15px;
+     
+        li {
+          list-style: none;
+          padding: 20px;
+          width: 100%;
+  
+          a {
+            display: flex;
+            flex-flow: row nowrap;
+            text-decoration: none;
+            color: var(--text-basic-color);
+          }
+  
+          &:hover {
+            background-color: #2c8cf4;
+  
+            a {
+              color: white;
+  
+              svg {
+                path {
+                  stroke: white;
+                }
+  
+              }
+            }
+          }
         }
-
-        &:hover {
+  
+        .active {
           background-color: #2c8cf4;
-
+  
           a {
             color: white;
-
+  
             svg {
               path {
                 stroke: white;
               }
-
+  
             }
           }
         }
+  
       }
-
-      .active {
-        background-color: #2c8cf4;
-
-        a {
-          color: white;
-
-          svg {
-            path {
-              stroke: white;
-            }
-
-          }
-        }
-      }
-
     }
+  
+  
   }
 
   footer {

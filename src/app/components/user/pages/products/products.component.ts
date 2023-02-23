@@ -17,7 +17,7 @@ export interface cartData {
   product: productData
 
 }
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+
 export interface dropDownQuantity {
   id: number;
   quantity: number;
@@ -27,17 +27,15 @@ export interface dropDownQuantity {
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
-  providers: [NgbCarouselConfig]
+
 })
 
 export class ProductsComponent implements OnInit {
   message: string;
   
-  constructor(private apiService: ProductService,config: NgbCarouselConfig,private cdr: ChangeDetectorRef,private interfaceService:UserInterfaceService,  private dialogService: TmDialogService, private currencyPipe: CurrencyPipe, private toastrService: TmToastrService, private http: HttpClient, private router: Router, private cartService: CartService) {
+  constructor(private apiService: ProductService,  private dialogService: TmDialogService, private currencyPipe: CurrencyPipe, private toastrService: TmToastrService, private http: HttpClient, private router: Router, private cartService: CartService) {
     this.cartsData;
-    config.interval = 2000;
-    config.keyboard = true;
-    config.pauseOnHover = true;
+   
   }
 
   products: productData[] = []
@@ -68,15 +66,7 @@ export class ProductsComponent implements OnInit {
         });
       })
    
-      this.interfaceService.getAll().subscribe(
-        (data: Carousel[]) => {
-          this.carouselData = data;
-          this.cdr.detectChanges(); // manually trigger change detection
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+     
   }
 
 

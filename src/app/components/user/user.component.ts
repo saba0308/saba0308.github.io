@@ -12,8 +12,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  standalone: true,
-	imports: [NgbDropdownModule],
+	providers: [NgbDropdownModule],
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {

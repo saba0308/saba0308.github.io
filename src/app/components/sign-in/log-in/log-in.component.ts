@@ -99,7 +99,7 @@ export class LogInComponent implements OnInit {
           console.log(user.id);
           console.log(user.status);
           setTimeout(() => {
-            this.router.navigate(['/user/products'])
+            this.router.navigate(['/user'])
           }
           , 500)
          

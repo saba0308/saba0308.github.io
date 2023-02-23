@@ -24,22 +24,50 @@ export class ProductsCreateComponent implements OnInit {
         productImage:["",Validators.required],
         productOffer:[""],
         productStatus:[""],
-        productCount:[""]
+        productCount:[""],
+        quantity:0
       }
     )
 
   }
+  // onSelectFile(event) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     var reader = new FileReader();
+
+  //     reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+  //     reader.onload = (event) => { // called once readAsDataURL is completed
+  //       this.productForm.value.productImage = event.target.result;
+     
+  //     }
+  //   }
+  // }
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-
+      const reader = new FileReader();
+      reader.onload = () => {
+        console.log(reader.result); // log base64 string to console
+        this.productForm.get('productImage').setValue(reader.result);
+      };
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        this.productForm.value.productImage = event.target.result;
-     
-      }
     }
+  }
+  handleInputChange(e) {
+    var file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    var pattern = /image-*/;
+    var reader = new FileReader();
+    if (!file.type.match(pattern)) {
+      alert('invalid format');
+      return;
+    }
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsDataURL(file);
+  }
+  _handleReaderLoaded(e) {
+    let reader = e.target;
+    this.productForm.value.productImage = reader.result;
+    console.log( this.productForm.value.productImage)
   }
 
  public fields: Object = { text: 'Game', value: 'Id' };

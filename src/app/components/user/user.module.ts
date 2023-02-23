@@ -23,6 +23,9 @@ import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import{TmAutocompleteModule} from '@tmlib/ui-sdk/autocomplete';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import {  NgxSlickJsModule } from 'ngx-slickjs'
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 @NgModule({
   declarations: [
     UserComponent,
@@ -30,10 +33,11 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     ProductsComponent,
     OrdersComponent,
     AddToCartComponent,
+    LandingPageComponent,
   ],
   imports: [
     CommonModule,HttpClientModule, NgbModule,
-    UserRoutingModule, TmLayoutModule, TmSidebarModule.forRoot(), TmUserModule, TmMenuModule, TmContextMenuModule,
+    UserRoutingModule, TmLayoutModule, TmSidebarModule.forRoot(),SlickCarouselModule, TmUserModule, TmMenuModule, TmContextMenuModule,
     TmCardModule, FormsModule, ReactiveFormsModule, TmFormFieldModule, TmInputModule, TmButtonModule, TmSelectModule,TmBadgeModule,TmAutocompleteModule
   ],
   providers: [
