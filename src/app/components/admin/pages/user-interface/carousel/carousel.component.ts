@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserInterfaceService } from '../../../services/user-interface.service';
 import { of } from 'rxjs';
-
+import { ChangeDetectorRef } from '@angular/core';
 export interface Carousel {
   id: any;
   carouselImage: any;
@@ -17,34 +17,36 @@ export interface Carousel {
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
-  public testData:any=[]
-  constructor(public interfaceService: UserInterfaceService, private router: Router, private formBuilder: FormBuilder) { }
+  public testData:any[]=[];
+  title = 'My App';
+  constructor(public interfaceService: UserInterfaceService, private cdr: ChangeDetectorRef,private router: Router, private formBuilder: FormBuilder) { 
+  
+  }
 
   ngOnInit(): void {
-
-    this.getData();
-
+  
+  this.getData()
+    
+    console.log('check',this.testData)
   }
   create() {
     this.router.navigateByUrl('admin/user-interface/carousel-create')
   }
   getData() {
-    // this.carouselData$ = this.interfaceService.getAll();
     this.interfaceService.getAll().subscribe(
-      (data: any) => {
-        console.log(data);
-        // data.forEach((carousel: any) => {
-        //   this.carouselData.push(carousel);
-
-        // });
+      (data: Carousel[]) => {
         this.testData = data;
-
-        console.log(this.testData, " after assigning data from api");
-        // move the code that depends on carouselData here
+        this.cdr.detectChanges(); // manually trigger change detection
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+  delete(id){
+    this.interfaceService.deleteCarousel(id).subscribe((a)=>(
+      console.log("deleted")
+    ))
+    this.getData()
   }
 }

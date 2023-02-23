@@ -21,7 +21,8 @@ import { TmBadgeModule } from '@tmlib/ui-sdk/badge';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import{TmAutocompleteModule} from '@tmlib/ui-sdk/autocomplete'
+import{TmAutocompleteModule} from '@tmlib/ui-sdk/autocomplete';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 @NgModule({
   declarations: [
     UserComponent,
@@ -31,7 +32,7 @@ import{TmAutocompleteModule} from '@tmlib/ui-sdk/autocomplete'
     AddToCartComponent,
   ],
   imports: [
-    CommonModule,HttpClientModule,
+    CommonModule,HttpClientModule, NgbModule,
     UserRoutingModule, TmLayoutModule, TmSidebarModule.forRoot(), TmUserModule, TmMenuModule, TmContextMenuModule,
     TmCardModule, FormsModule, ReactiveFormsModule, TmFormFieldModule, TmInputModule, TmButtonModule, TmSelectModule,TmBadgeModule,TmAutocompleteModule
   ],

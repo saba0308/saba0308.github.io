@@ -61,7 +61,6 @@ export class AdminComponent implements OnInit,OnDestroy  {
       .subscribe((res: NavigationEnd) => {
         if (res.url == '/admin/dashboard') {
           this.message = "Dashboard"
-
         }
         else if (res.url == '/admin/user-list') {
           this.message = "Users"
@@ -71,6 +70,12 @@ export class AdminComponent implements OnInit,OnDestroy  {
         }
         else if (res.url == '/admin/products-list/create') {
           this.message = " Create Product"
+        }
+        else if (res.url == '/admin/user-interface') {
+          this.message = "User Interface"
+        }
+        else if (res.url == '/admin/order-list') {
+          this.message = "Order"
         }
 
       });
