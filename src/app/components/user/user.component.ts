@@ -8,9 +8,12 @@ import { CartService } from './services/cart/cart.service';
 import { TmDialogService } from '@tmlib/ui-sdk/dialog';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 import { productData } from '../model/product';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
+  standalone: true,
+	imports: [NgbDropdownModule],
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
