@@ -7,7 +7,7 @@ import {
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TmDialogService } from '@tmlib/ui-sdk/dialog';
+import { TmDialogRef, TmDialogService } from '@tmlib/ui-sdk/dialog';
 import { TmToastrService } from '@tmlib/ui-sdk/toastr';
 import { EncryptionService } from '../../services/encrypt-decrypt/encryption.service';
 import { AuthService } from '../services/auth.service';
@@ -72,7 +72,7 @@ export class LogInComponent implements OnInit {
     }
 
     else {
-      this.router.navigate(['auth/log-in']);
+      this.router.navigate(['auth/sign-in']);
     }
     this._http.get<userData[]>("https://template-json-server.vercel.app/api/usersData")
       .subscribe(res => {
@@ -125,7 +125,7 @@ export class LogInComponent implements OnInit {
      
             `Please check your Email and Password`, 'User Not Found',
            );
-          this.router.navigate(['auth/log-in']);
+          this.router.navigate(['auth/sign-in']);
         }
 
       }, err => {

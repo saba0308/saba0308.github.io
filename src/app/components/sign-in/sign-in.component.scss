@@ -4,22 +4,72 @@ tm-layout {
         position: fixed;
         top: 0px;
         left: 0px;
-        background-color: rgb(153, 221, 226);
-        background-image: url('../../../assets/background-wallpaper.jpg');
+        // background-image: url('../../../assets/5464026.jpg');
         width: 100%;
         height: 670px;
         padding: 0%;
         background-size: 100% 100%;
         background-repeat: no-repeat;
+        background-color: #ffffff;
+
+        .heading {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            padding: 10px;
+            
+
+            h1 {
+                color: white;
+                font-size: 32pt;
+                padding-left: 60px;   
+            }
+            .navBar{
+                padding-top: 50px;
+            
+            }
+        }
+.cartImage{
+    position: absolute;
+    left:75%;
+    top:330px;
+    z-index:1;
+ img{
+    width:250px;
+    -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.1)));
+ }
+}
+        .backgroundImage {
+
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 130px;
+            left: 50%;
+            z-index: 1;
+            -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.1)));
+        }
+        .backgroundImageEcommerce{
+            width:300px;
+            height:400px;
+            position: absolute;
+            left:46%;
+            top:20%;
+           
+        }
 
         tm-card {
             width: 400px;
             position: relative;
             top: 100px;
-            left: 32%;
-            background-color: rgba($color: #ffffff, $alpha: 0.8);
+            left: 5%;
+          border-color:rgb(180, 180, 180);
             border-radius: 10px;
             padding: 20px;
+           // -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.1)));
 
             .userTableHeader {
                 position: absolute;
@@ -36,6 +86,12 @@ tm-layout {
                 z-index: 1;
 
             }
+        }
+        footer{
+            position: fixed;
+            bottom:10px;
+            left:33%;
+            
         }
     }
 }
@@ -125,14 +181,15 @@ tm-layout {
 
         tm-layout-column {
             width: 450px;
-         
+
             tm-card {
-                width:400px;
+                width: 400px;
                 left: -2%;
             }
         }
     }
 }
+
 @media screen and (max-width:400px) and (min-width:350px) {
     tm-layout {
 
@@ -140,8 +197,9 @@ tm-layout {
             width: 400px;
 
             tm-card {
-                width:350px;
+                width: 350px;
                 left: -3%;
+
                 .userTableHeader {
                     position: absolute;
                     border-radius: 7px;
@@ -155,12 +213,13 @@ tm-layout {
                     top: -20px;
                     left: 50px;
                     z-index: 1;
-    
+
                 }
             }
         }
     }
 }
+
 @media screen and (max-width:350px) and (min-width:300px) {
     tm-layout {
 
@@ -168,8 +227,9 @@ tm-layout {
             width: 400px;
 
             tm-card {
-                width:320px;
+                width: 320px;
                 left: -2%;
+
                 .userTableHeader {
                     position: absolute;
                     border-radius: 7px;
@@ -183,23 +243,26 @@ tm-layout {
                     top: -20px;
                     left: 50px;
                     z-index: 1;
-    
+
                 }
             }
         }
     }
 }
+
 @media screen and (max-width:300px) and (min-width:200px) {
     tm-layout {
 
         tm-layout-column {
             width: 300px;
             height: 100%;
-             background-image: none;
-             background-color: deepskyblue;
+            background-image: none;
+            background-color: deepskyblue;
+
             tm-card {
-                width:280px;
+                width: 280px;
                 left: -2%;
+
                 .userTableHeader {
                     position: absolute;
                     border-radius: 7px;
@@ -213,7 +276,7 @@ tm-layout {
                     top: -20px;
                     left: 40px;
                     z-index: 1;
-    
+
                 }
             }
         }

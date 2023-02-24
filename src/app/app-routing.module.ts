@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'auth/log-in',
+    redirectTo: 'auth/sign-in',
     pathMatch: 'full'
   }
 

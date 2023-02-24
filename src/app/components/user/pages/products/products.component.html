@@ -41,7 +41,7 @@
             <button tmButton class="filterModule" (click)="filterData('')">All Products</button>
             <button tmButton class="filterModule" (click)="filterData('Electronics')">Electronics</button>
             <button tmButton class="filterModule" (click)="filterData('Fashion')">Fashion</button>
-            <button tmButton class="filterModule" (click)="filterData('Home & kitchen')">Home & kitchen</button>
+            <button tmButton class="filterModule" (click)="filterData('Home&Kitchen')">Home & kitchen</button>
         </div>
         <div class="dropdown">
             <tm-select placeholder="Filter By" [ngModel]="selectedItem" (ngModelChange)="filterData($event)">

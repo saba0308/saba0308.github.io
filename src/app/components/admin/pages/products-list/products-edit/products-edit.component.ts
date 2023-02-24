@@ -29,21 +29,20 @@ id:any;
         productOffer:[this.productsData.productOffer],
         productStatus:[this.productsData.productStatus],
         productCount:[this.productsData.productCount],
-        quantity:[this.productsData.quantity]
+        quantity:0
       }
     )
 
   }
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-
+      const reader = new FileReader();
+      reader.onload = () => {
+        console.log(reader.result); // log base64 string to console
+        this.productForm.get('productImage').setValue(reader.result);
+      };
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        this.productForm.value.productImage = event.target.result;
-     
-      }
     }
   }
 

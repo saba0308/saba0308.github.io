@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
   userdata!: userData;
   items = [
     { title: 'Profile', link: "/user/profile" },
-    { title: 'Logout', link: "/auth/log-in" },
+    { title: 'Logout', link: "/auth/sign-in" },
   ];
   products;
   message:string;
@@ -76,7 +76,7 @@ export class UserComponent implements OnInit {
     })
     localStorage.setItem('isLoggedIn', 'false');
     localStorage.removeItem('currentuser');
-    this.router.navigate(['/auth/log-in']);
+    this.router.navigate(['/auth/sign-in']);
     console.log('Post updated successfully!');
   }
 

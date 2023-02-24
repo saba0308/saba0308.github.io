@@ -157,9 +157,9 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.apiService.update(this.id, this.passwordForm.value).subscribe((res: any) => {
       console.log('Post updated successfully!');
-      this.router.navigateByUrl('/auth/log-in');
+      this.router.navigateByUrl('/auth/sign-in');
     })
-    this.router.navigate(['/auth/log-in'])
+    this.router.navigate(['/auth/sign-in'])
   }
   get f(): { [key: string]: AbstractControl } {
     return this.signInForm.controls;

@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit,OnDestroy  {
   currentUser!:string|null;
   items = [
     { title: 'Profile' },
-    { title: 'Logout' ,link:"/auth/log-in"},
+    { title: 'Logout' ,link:"/auth/sign-in"},
   ];
   check_box_type = CheckBoxType;
   private destroy$: Subject<void> = new Subject<void>();
@@ -265,7 +265,7 @@ corporate(checked:boolean){
   logOut(){
     localStorage.setItem('isAdminLoggedIn','false');    
     localStorage.removeItem('adminValue');
-    this.router.navigate(['/auth/log-in']);
+    this.router.navigate(['/auth/sign-in']);
     localStorage.clear();
   }
   open(dialog: TemplateRef<any>) {

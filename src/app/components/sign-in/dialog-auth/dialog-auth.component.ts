@@ -18,7 +18,7 @@ export class DialogAuthComponent implements OnInit {
     this.ref.close();
   }
   logIn(){
-    this.router.navigate(['/auth/log-in']);
+    this.router.navigate(['/auth/sign-in']);
     this.ref.close();
     
    }
