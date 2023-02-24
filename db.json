@@ -218,8 +218,10 @@
       "productImage": "https://www.jiomart.com/images/product/330x410/rvslo5isxn/bullmer-men-navy-cotton-blend-printed-single-t-shirt-product-images-rvslo5isxn-0-202207150115.jpg",
       "productOffer": 5,
       "productStatus": "In stock",
-      "productCount": 10,
-      "quantity": 0
+      "productCount": 9,
+      "quantity": 0,
+      "total": 20,
+      "qtyTotal": 1
     },
     {
       "id": 4,
@@ -627,6 +629,29 @@
         }
       ],
       "id": 12
+    },
+    {
+      "date": "2023-02-24T10:50:51.319Z",
+      "email": "user123@gmail.com",
+      "product": [
+        {
+          "id": 3,
+          "productnumber": 3,
+          "productName": "Style fit T-shirt",
+          "productCode": "FM001",
+          "productPrice": 20,
+          "productCategory": "Fashion",
+          "productDescription": "Style fit",
+          "productImage": "https://www.jiomart.com/images/product/330x410/rvslo5isxn/bullmer-men-navy-cotton-blend-printed-single-t-shirt-product-images-rvslo5isxn-0-202207150115.jpg",
+          "productOffer": 5,
+          "productStatus": "In stock",
+          "productCount": 9,
+          "quantity": 1,
+          "total": 20,
+          "qtyTotal": 1
+        }
+      ],
+      "id": 13
     }
   ],
   "order": [
@@ -828,6 +853,37 @@
         }
       ],
       "id": 19
+    },
+    {
+      "email": "user123@gmail.com",
+      "address": "dhgjfdjjjjjjjjjjd",
+      "orderCode": "Fri Feb 24 2023 16:20:35 GMT+0530 (India Standard Time)277",
+      "pincode": "632001",
+      "payment": "Cash On delivery",
+      "status": "Packed",
+      "date": "2023-02-24T10:50:35.181Z",
+      "deliveryCharge": null,
+      "totalvalue": 20,
+      "products": null,
+      "product": [
+        {
+          "id": 3,
+          "productnumber": 3,
+          "productName": "Style fit T-shirt",
+          "productCode": "FM001",
+          "productPrice": 20,
+          "productCategory": "Fashion",
+          "productDescription": "Style fit",
+          "productImage": "https://www.jiomart.com/images/product/330x410/rvslo5isxn/bullmer-men-navy-cotton-blend-printed-single-t-shirt-product-images-rvslo5isxn-0-202207150115.jpg",
+          "productOffer": 5,
+          "productStatus": "In stock",
+          "productCount": 9,
+          "quantity": 1,
+          "total": 20,
+          "qtyTotal": 1
+        }
+      ],
+      "id": 20
     }
   ],
   "carousel": [

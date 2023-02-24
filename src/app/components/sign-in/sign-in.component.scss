@@ -55,7 +55,7 @@ tm-layout {
         .backgroundImageEcommerce{
             width:300px;
             height:400px;
-            position: absolute;
+            position: relative;
             left:46%;
             top:20%;
            
@@ -123,6 +123,14 @@ tm-layout {
 
 
 
+            }
+            .backgroundImageEcommerce{
+                width:300px;
+                height:400px;
+                position: relative;
+                left:16%;
+                top:50%;
+               
             }
         }
     }
@@ -257,7 +265,7 @@ tm-layout {
             width: 300px;
             height: 100%;
             background-image: none;
-            background-color: deepskyblue;
+  
 
             tm-card {
                 width: 280px;
@@ -279,6 +287,8 @@ tm-layout {
 
                 }
             }
+
+
         }
     }
 }

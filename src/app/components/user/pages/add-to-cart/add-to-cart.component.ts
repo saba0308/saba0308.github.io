@@ -64,7 +64,7 @@ export class AddToCartComponent implements OnInit {
       orderCode: new Date() + '277',
       pincode: "",
       payment: "",
-      status: 'pending',
+      status: 'processing',
       date: new Date(),
       deliveryCharge: this.shipping,
       totalvalue: this.totalPrice,

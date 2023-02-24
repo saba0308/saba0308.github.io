@@ -29,7 +29,7 @@
                         <form  style="padding: 5px;"*ngIf="visibleIndex === i" [formGroup]="statusForm">
                             <tm-select [(selected)]="orderData.status" placeholder="status" formControlName="status"
                                 fullWidth>
-                                <tm-option value="Pending">Pending</tm-option>
+                                <tm-option value="processing">processing</tm-option>
                                 <tm-option value="Packed">Packed</tm-option>
                                 <tm-option value="Shipped">Shipped</tm-option>
                                 <tm-option value="Delivered">Delivered</tm-option>

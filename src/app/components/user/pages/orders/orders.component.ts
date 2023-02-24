@@ -52,6 +52,9 @@ export class OrdersComponent implements OnInit {
   }
   orderdeatils = false;
   orderFilter;
+  public counts = ["Progress","Packed","Shipped",
+  "Delivered"];
+  public orderStatus = "Progress"
   orderDetails(item) {
     this.orderdeatils = true;
     this.orderFilter = this.orderData.filter((p) => p.id === item.id);
