@@ -19,36 +19,17 @@ export class CartService {
   items=[];
   cartProduct:productData[];
   public productList=new BehaviorSubject<productData[]>([])
-  // Observable<cartProduct>
-  cart(product):Observable<order>{
-    
+
+  cart(product):Observable<order>{  
      return this.http.post<order>(this.apiServer + '/cartProducts/', JSON.stringify(product), this.httpOptions)
     .pipe(
        catchError(this.errorHandler)
      )
   }
-
+// add to cart
 addToCart(addedItem) {
   this.items.push(addedItem);
   this.saveCart();
- 
-  // this.cart(addedItem);
-  // console.log(addedItem);
-
-  //-----check if there are items already added in cart
-  /* let existingItems = [];
-  if ( localStorage.getItem('cart_items')){//----- update by adding new items
-    existingItems = JSON.parse(localStorage.getItem('cart_items'));
-    existingItems = [addedItem, ...existingItems];
-    console.log( 'Items exists');
-  } */
-  //-----if no items, add new items
-  /* else{ 
-    console.log( 'NO items exists');
-    existingItems = [addedItem]
-  } */
-
-  
 }
 postCartItem(addedItem):Observable<any>{
   return this.http.post<any>( 'http://localhost:3000/cartProducts/', JSON.stringify(addedItem), this.httpOptions)
@@ -68,6 +49,7 @@ updatCartItem(id,addedItem):Observable<any>{
      catchError(this.errorHandler)
    )
 }
+// get all cart items
 getAllCartItems(){
   return this.http.get<productData[]>("http://localhost:3000/products/")
   .pipe(map((res:productData[])=>{
@@ -75,15 +57,13 @@ getAllCartItems(){
   }))
 }
 getCartItems(){
-  // return this.productList.asObservable();
 
-  // this.loadCart();
   return this.items;
-  // 
+  
   
  }
  setCartItems(product:productData[]){
-  //  this.productList.next(product)
+ 
 
   this.items.push(product);
   this.saveCart();
@@ -163,12 +143,7 @@ deleteOrder(id:any):Observable<any>{
   return this.http.delete<any>( 'http://localhost:3000/order/' + id,this.httpOptions)
  
 }
-// getAllCart(): Observable<cartData> {
-//   return this.http.get<cartData>('http://localhost:3000/cartProducts/')
-//   .pipe(
-//     catchError(this.errorHandler)
-//   )
-// }
+
 putOrderStatus(id:any,productsData:any):Observable<any>{
   return this.http.patch<any>( 'http://localhost:3000/order/' + id, JSON.stringify(productsData), this.httpOptions)
   .pipe(

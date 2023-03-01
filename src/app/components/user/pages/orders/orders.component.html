@@ -8,31 +8,22 @@
 </tm-card>
 
 <div class="orderContainer" *ngIf="orderData.length!=0 && !orderdeatils">
-    <!-- <table>
-                <thead>
-                    <tr>
-                        <th> S.No</th>
-                        <th>Product Details</th>
-                        <th>Order Date</th>
-                        <th>Order Total</th>
-                        <th>Address</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let orderData of orderData;let i=index;">
-                         <td>{{i+1}}</td>
-                        
-                         <td> <div *ngFor="let productData of orderData.product;">{{productData.productName}}</div> </td>
-                         <td>{{orderData.date |date}}</td>
-                         <td>{{orderData.totalvalue}}</td>
-                         <td>{{orderData.address}}</td>
-                         <td>{{orderData.status}}</td>
-                    </tr>
-                </tbody>
-            </table> -->
+    <!-- <dialog  class="snackBar">
+      
+        <h6>Your order has been cancel</h6>
 
-
+        <p (click)="closeSnackBar()">close</p>
+       
+    </dialog> -->
+    <ng-template #dialog let-data let-ref="dialogRef">     
+            <div class="d-flex justify-content-between gap-3" style="padding: 10px; width:560px; background-color: green;position: fixed;top:130px;left:280px;">
+                <h6 style="color: white;">Your order has been cancel</h6>
+                <p (click)="ref.close()"> close</p>
+            </div>
+    </ng-template>
+    <br>
+    <!-- <button (click)="open(dialog)" tmButton status="primary">snackbar</button> -->
+    <br>
     <div class="orderHistory" *ngFor="let orderData of orderData;">
         <tm-card>
             <tm-card-body>
@@ -64,7 +55,9 @@
 
             </tm-card-footer>
         </tm-card>
+
     </div>
+
 </div>
 <div class="filterContainer" *ngIf="orderdeatils">
     <div class="orderHistory">
@@ -115,16 +108,7 @@
                                 </td>
                             </tr>
                         </table>
-                        <!-- <div class="productDetails" >
-                      
-                    </div>
-                     <div class="productDetails">
-                        <span>{{productData.productDescription}}</span>
-                     </div>
-                     <div class="productDetails">
-                        <span>{{productData.quantity}}</span>
-                        <span>{{productData.quantity * productData.productPrice}}</span>
-                     </div> -->
+
 
                     </div>
 
@@ -142,7 +126,7 @@
                                 <td>
                                     <span>Payment:</span>
                                     <p>{{orderData.payment}}</p>
-                                    
+
                                 </td>
                             </tr>
                         </table>
@@ -151,14 +135,15 @@
                     </div>
                     <div class="progresscontainer">
                         <span *ngFor="let item of counts;let i = index">
-                           
+
                             <span class="circles" [class.active]="orderData.status === item"></span>
-                            <span class="circle-desc" [class.circle-desc-active]="orderData.status === item">{{ item }}</span>
+                            <span class="circle-desc" [class.circle-desc-active]="orderData.status === item">{{ item
+                                }}</span>
                             <span class="bar" *ngIf="(i != counts.length-1)"></span>
                         </span>
                     </div>
                 </div>
-                
+
 
 
             </tm-card-body>

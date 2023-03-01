@@ -21,11 +21,11 @@ import { TmBadgeModule } from '@tmlib/ui-sdk/badge';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import{TmAutocompleteModule} from '@tmlib/ui-sdk/autocomplete';
+import { TmAutocompleteModule } from '@tmlib/ui-sdk/autocomplete';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import {  NgxSlickJsModule } from 'ngx-slickjs'
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import {SnackbarModule} from 'ngx-snackbar';
 @NgModule({
   declarations: [
     UserComponent,
@@ -36,12 +36,12 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     LandingPageComponent,
   ],
   imports: [
-    CommonModule,HttpClientModule, NgbModule,
-    UserRoutingModule, TmLayoutModule, TmSidebarModule.forRoot(),SlickCarouselModule, TmUserModule, TmMenuModule, TmContextMenuModule,
-    TmCardModule, FormsModule, ReactiveFormsModule, TmFormFieldModule, TmInputModule, TmButtonModule, TmSelectModule,TmBadgeModule,TmAutocompleteModule
+    CommonModule, HttpClientModule, NgbModule,SnackbarModule.forRoot(),
+    UserRoutingModule, TmLayoutModule, TmSidebarModule.forRoot(), SlickCarouselModule, TmUserModule, TmMenuModule, TmContextMenuModule,
+    TmCardModule, FormsModule, ReactiveFormsModule, TmFormFieldModule, TmInputModule, TmButtonModule, TmSelectModule, TmBadgeModule, TmAutocompleteModule
   ],
   providers: [
     CurrencyPipe
-]
+  ]
 })
 export class UserModule { }

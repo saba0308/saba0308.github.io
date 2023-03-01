@@ -16,6 +16,38 @@ tm-card {
 
 
 .orderContainer {
+    position: relative;
+    top: 60px;
+    dialog {
+        width: 600px;
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+        padding: 10px;
+        height:40px;
+        z-index: 1;
+        background-color: green;
+        border: green;
+      position: absolute;
+    top: -60%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+     h6{
+       color: white;
+     }
+    p{
+        color: black;
+    }
+    }
+    dialog::backdrop{
+        background-color: darkorange;
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+    }
     table {
         width: 100%;
 

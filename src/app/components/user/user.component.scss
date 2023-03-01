@@ -3,6 +3,14 @@ tm-layout {
   tm-layout-header {
     background: #2c8cf4;
     height: 120px;
+    // position: fixed;
+    // top: 0;
+    // right: 0;
+    // bottom: 0;
+    // left: 0;
+    // background: rgba(#000, .6);
+    // opacity: 0;
+    // transition: opacity .2s;
     .flexContainer {
       display: flex;
       flex-direction: column;
@@ -35,7 +43,7 @@ tm-layout {
               height: 40px;
 
               path {
-                fill: var(--text-basic-color)
+                fill: white;
               }
             }
           }
@@ -54,6 +62,7 @@ tm-layout {
         position: relative;
         top:40px;
         display: flex;
+        justify-content: space-between;
         gap:50px;
         a{
           text-decoration: none;

@@ -25,36 +25,31 @@ export class SignInComponent implements OnInit {
     },
   ]
   message!: string;
-  hide:boolean=true;
-  constructor(public router: Router,private dialogService: TmDialogService) {
+  hide: boolean = true;
+  constructor(public router: Router, private dialogService: TmDialogService) {
     // path match
     router.events
       .pipe(filter((e: Event): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe((res: NavigationEnd) => {
         if (res.url == '/auth/sign-up') {
           this.message = "Sign Up"
- this.hide=true;
+          this.hide = true;
         }
         else if (res.url == '/auth/sign-in') {
           this.message = "Sign In"
-          this.hide=false;
+          this.hide = false;
         }
-        else{
+        else {
           this.message = "Password Recovery";
-          this.hide=true;
+          this.hide = true;
         }
-    
-
-
       });
   }
 
   ngOnInit(): void {
   }
-  // openLogin(hasBackdrop: boolean){
-  //   this.dialogService.open(LogInComponent, { hasBackdrop });
-  // }
-  login(){
+
+  login() {
     this.router.navigateByUrl('auth/sign-in')
   }
 }

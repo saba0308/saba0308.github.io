@@ -73,7 +73,7 @@ export class AddToCartComponent implements OnInit {
 
 
   }
-  private index: number = 0;
+
 
   showToast(duration) {
     this.toastrService.success(

@@ -4,7 +4,6 @@ tm-layout {
         position: fixed;
         top: 0px;
         left: 0px;
-        // background-image: url('../../../assets/5464026.jpg');
         width: 100%;
         height: 670px;
         padding: 0%;
@@ -20,28 +19,32 @@ tm-layout {
             top: -10px;
             left: -10px;
             padding: 10px;
-            
+
 
             h1 {
                 color: white;
                 font-size: 32pt;
-                padding-left: 60px;   
+                padding-left: 60px;
             }
-            .navBar{
+
+            .navBar {
                 padding-top: 50px;
-            
+
             }
         }
-.cartImage{
-    position: absolute;
-    left:75%;
-    top:330px;
-    z-index:1;
- img{
-    width:250px;
-    -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.1)));
- }
-}
+
+        .cartImage {
+            position: absolute;
+            left: 75%;
+            top: 330px;
+            z-index: 1;
+
+            img {
+                width: 250px;
+                -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.1)));
+            }
+        }
+
         .backgroundImage {
 
             width: 400px;
@@ -52,24 +55,25 @@ tm-layout {
             z-index: 1;
             -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.1)));
         }
-        .backgroundImageEcommerce{
-            width:300px;
-            height:400px;
+
+        .backgroundImageEcommerce {
+            width: 300px;
+            height: 400px;
             position: relative;
-            left:46%;
-            top:20%;
-           
+            left: 46%;
+            top: 100px;
+
         }
 
         tm-card {
             width: 400px;
             position: relative;
-            top: 100px;
+            top: -280px;
             left: 5%;
-          border-color:rgb(180, 180, 180);
+            border-color: rgb(180, 180, 180);
             border-radius: 10px;
             padding: 20px;
-           // -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.1)));
+            // -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.1)));
 
             .userTableHeader {
                 position: absolute;
@@ -87,11 +91,12 @@ tm-layout {
 
             }
         }
-        footer{
+
+        footer {
             position: fixed;
-            bottom:10px;
-            left:33%;
-            
+            bottom: 10px;
+            left: 33%;
+
         }
     }
 }
@@ -124,13 +129,14 @@ tm-layout {
 
 
             }
-            .backgroundImageEcommerce{
-                width:300px;
-                height:400px;
+
+            .backgroundImageEcommerce {
+                width: 300px;
+                height: 400px;
                 position: relative;
-                left:16%;
-                top:50%;
-               
+                left: 16%;
+                top: 50%;
+
             }
         }
     }
@@ -265,7 +271,7 @@ tm-layout {
             width: 300px;
             height: 100%;
             background-image: none;
-  
+
 
             tm-card {
                 width: 280px;

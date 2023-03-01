@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { TmToastrService } from '@tmlib/ui-sdk/toastr';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { productData } from 'src/app/components/model/product';
 import { CartService } from '../../services/cart/cart.service';
 import { cartData } from '../products/products.component';
+import { SnackbarService } from 'ngx-snackbar';
+import { TmDialogService } from '@tmlib/ui-sdk/dialog';
 
 @Component({
   selector: 'app-orders',
@@ -17,7 +19,7 @@ export class OrdersComponent implements OnInit {
   productData;
   productDetails: cartData;
   rallies$: Observable<any[]>;
-  constructor(private http: HttpClient, private cartService: CartService, private toastrService: TmToastrService) { }
+  constructor(private http: HttpClient,private snackbarService:SnackbarService,private dialogService: TmDialogService, private cartService: CartService, private toastrService: TmToastrService) { }
   userData;
   ngOnInit(): void {
     this.userData = JSON.parse(localStorage.getItem('currentuser') || '{}');
@@ -65,13 +67,46 @@ export class OrdersComponent implements OnInit {
   sortRalliesByDateDesc() {
 
   }
+  snackBarOpen:boolean=false;
   cancel(id) {
     this.cartService.deleteOrder(id).subscribe((data) => ({
  
     }))
 this.showToast(1000)
+// this.snackbarService.add({
+//   msg: 'success',
+//   action: {
+//     text: 'close',
+//     color: 'red'
+//   },
+// });
+
   }
   showToast(duration) {
     this.toastrService.danger('**', `order canceled`, { duration });
+  }
+
+  history(){
+    // this.snackbarService.add({
+    //   msg: 'Your order cancel successfully',
+    //   color:'white',
+    
+    //   customClass:'snackBar',
+    //   action: {
+    //     text: ' ',
+    //     color: '',
+      
+    //   },
+  
+      
+    // });
+
+
+  }
+  open(dialog: TemplateRef<any>) {
+    this.dialogService.open(dialog, { context: ' ' });
+  }
+  closeSnackBar(){
+    
   }
 }

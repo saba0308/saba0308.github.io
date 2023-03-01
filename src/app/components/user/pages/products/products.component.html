@@ -1,40 +1,4 @@
-<!-- <div class="carouselConatiner">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-      
-           
-     
-        <div class="carousel-inner">
-          <div class="carousel-item active"  *ngFor="let carousel of carouselData" >
-            <img class="d-block w-100" src="{{carousel.carouselImage}}" alt="First slide">
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-</div> -->
-       
-<!-- <ngb-carousel >
-  <ng-template ngbSlide *ngFor="let carousel of carouselData">
-    <div class="wrapper">
-      <img class="d-block w-100" [src]="carousel.carouselImage" alt="Random first slide">
-    </div>
-    <div class="carousel-caption">
-      
-    </div>
-  </ng-template>
- 
-</ngb-carousel> -->
+
 <tm-card>
     <tm-card-body>
         <div class="container">
@@ -85,11 +49,7 @@
             <div>
                 <tm-form-field appearance="legacy" style="width:50x;">
 
-                    <!-- <tm-select [(selected)]="selectedQty" [ngModelOptions]="{standalone: true}" (selectedChange)="dropDownValue($event.value,product.id)">
-                  <tm-option *ngFor="let value of quantitys" [value]="value.qty">
-                    {{ value.qty }}
-                  </tm-option>
-                </tm-select> -->
+               
                     <button  [disabled]="product.quantity===0 " tmPrefix status="primary" (click)="decrement(product)" tmButton>-</button>
                     <input style="text-align:center;" tmInput [(ngModel)]="product.quantity" [ngModelOptions]="{standalone: true}" min="1"
                         type="number" value="{{product.quantity}}" name="" class="form-control" />
